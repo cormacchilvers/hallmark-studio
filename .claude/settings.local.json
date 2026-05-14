@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create *)",
+      "PowerShell(Set-Location \"C:\\\\Users\\\\corma\\\\OneDrive\\\\Documents\\\\hallmark-studio\"; Get-ChildItem -Recurse -Exclude node_modules,dist,.claude | Where-Object { -not $_.PSIsContainer } | Select-Object FullName | ForEach-Object { $_.FullName.Replace\\(\"C:\\\\Users\\\\corma\\\\OneDrive\\\\Documents\\\\hallmark-studio\\\\\", \"\"\\) })",
+      "PowerShell(Set-Location \"C:\\\\Users\\\\corma\\\\OneDrive\\\\Documents\\\\hallmark-studio\"; Start-Process -FilePath \"npm\" -ArgumentList \"run\", \"dev\" -PassThru | ForEach-Object { Start-Sleep -Seconds 4; $_} ; Invoke-WebRequest -Uri \"http://localhost:5173\" -UseBasicParsing -TimeoutSec 5 | Select-Object -ExpandProperty StatusCode)",
+      "Bash(npm run *)",
+      "Skill(vercel:deploy)",
+      "Bash(vercel *)",
+      "Bash(powershell -command \"\\(Get-Item public/logo.png\\).Length\")",
+      "Bash(dir public *)",
+      "Bash(copy \"public\\\\logo.png.png\" \"public\\\\logo.png\")",
+      "Bash(powershell -command \"\\(Get-Item 'public\\\\logo.png'\\).Length\")",
+      "PowerShell(Copy-Item *)",
+      "Bash(powershell *)",
+      "Skill(vercel:status)",
+      "Bash(git init *)",
+      "Bash(echo 'node_modules *)",
+      "Bash(git add *)",
+      "Bash(git commit *)"
+    ]
+  }
+}

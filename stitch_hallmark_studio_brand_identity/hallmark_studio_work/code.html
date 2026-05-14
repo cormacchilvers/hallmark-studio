@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&amp;family=Playfair+Display:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "on-error-container": "#ffdad6",
+                  "tertiary": "#b9c4ff",
+                  "on-background": "#e5e2e1",
+                  "on-tertiary-container": "#2e3b77",
+                  "on-surface-variant": "#d0c5b2",
+                  "primary-fixed": "#ffe08f",
+                  "outline": "#99907e",
+                  "on-primary-fixed-variant": "#584400",
+                  "inverse-primary": "#755b00",
+                  "on-primary-container": "#503d00",
+                  "surface-container": "#1f2020",
+                  "on-secondary-fixed-variant": "#464744",
+                  "surface-container-low": "#1b1c1c",
+                  "primary": "#e6c364",
+                  "secondary": "#c6c7c3",
+                  "outline-variant": "#4d4637",
+                  "on-primary-fixed": "#241a00",
+                  "tertiary-container": "#9ba8eb",
+                  "on-secondary": "#2f312e",
+                  "primary-container": "#c9a84c",
+                  "surface-variant": "#353535",
+                  "tertiary-fixed-dim": "#b9c3ff",
+                  "inverse-on-surface": "#303030",
+                  "surface-dim": "#131313",
+                  "on-surface": "#e5e2e1",
+                  "error": "#ffb4ab",
+                  "surface-container-lowest": "#0e0e0e",
+                  "on-tertiary": "#1e2b66",
+                  "background": "#131313",
+                  "surface-container-highest": "#353535",
+                  "inverse-surface": "#e5e2e1",
+                  "secondary-container": "#484947",
+                  "surface-tint": "#e6c364",
+                  "surface": "#131313",
+                  "primary-fixed-dim": "#e6c364",
+                  "on-secondary-container": "#b8b9b5",
+                  "on-error": "#690005",
+                  "tertiary-fixed": "#dde1ff",
+                  "on-tertiary-fixed": "#041451",
+                  "on-primary": "#3d2e00",
+                  "surface-container-high": "#2a2a2a",
+                  "surface-bright": "#393939",
+                  "error-container": "#93000a",
+                  "on-secondary-fixed": "#1a1c1a",
+                  "secondary-fixed": "#e3e3df",
+                  "secondary-fixed-dim": "#c6c7c3",
+                  "on-tertiary-fixed-variant": "#35437e"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "full": "9999px"
+          },
+          "spacing": {
+                  "unit": "8px",
+                  "margin-mobile": "24px",
+                  "margin-desktop": "80px",
+                  "gutter": "32px",
+                  "section-gap": "160px",
+                  "container-max": "1440px"
+          },
+          "fontFamily": {
+                  "headline-lg": ["Inter"],
+                  "display-xl-mobile": ["Inter"],
+                  "headline-lg-mobile": ["Inter"],
+                  "body-md": ["Inter"],
+                  "editorial-italic": ["Playfair Display"],
+                  "body-lg": ["Inter"],
+                  "label-caps": ["Inter"],
+                  "display-xl": ["Inter"]
+          },
+          "fontSize": {
+                  "headline-lg": ["64px", {"lineHeight": "120%", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                  "display-xl-mobile": ["64px", {"lineHeight": "110%", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                  "headline-lg-mobile": ["40px", {"lineHeight": "120%", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                  "body-md": ["16px", {"lineHeight": "160%", "fontWeight": "400"}],
+                  "editorial-italic": ["1.2em", {"lineHeight": "inherit", "fontWeight": "400"}],
+                  "body-lg": ["20px", {"lineHeight": "160%", "fontWeight": "400"}],
+                  "label-caps": ["12px", {"lineHeight": "100%", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                  "display-xl": ["120px", {"lineHeight": "110%", "letterSpacing": "-0.04em", "fontWeight": "900"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .marquee-content {
+      display: flex;
+      white-space: nowrap;
+      animation: marquee 30s linear infinite;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    .gold-glow {
+      background: radial-gradient(circle at center, rgba(201, 168, 76, 0.08) 0%, transparent 70%);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background selection:bg-primary selection:text-background">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-background/80">
+<nav class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-unit w-full max-w-container-max mx-auto">
+<div class="font-headline-lg text-on-surface tracking-tighter">HALLMARK STUDIO</div>
+<div class="hidden md:flex gap-gutter items-center">
+<a class="text-primary font-bold border-b border-primary pb-1 font-label-caps text-label-caps" href="#">Work</a>
+<a class="text-on-surface font-label-caps text-label-caps hover:text-primary transition-colors duration-300" href="#">Pricing</a>
+<a class="text-on-surface font-label-caps text-label-caps hover:text-primary transition-colors duration-300" href="#">Contact</a>
+<button class="ml-unit border border-primary px-6 py-3 font-label-caps text-label-caps hover:bg-primary hover:text-background transition-all duration-300 active:scale-95">Get a Quote</button>
+</div>
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</nav>
+</header>
+<main class="pt-32">
+<!-- Hero Section -->
+<section class="px-margin-mobile md:px-margin-desktop mb-16">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg max-w-4xl">
+        The Work<span class="text-primary">.</span>
+</h1>
+<p class="font-body-lg text-body-lg mt-8 max-w-2xl text-on-surface-variant">
+        A selection of high-craft digital experiences, designed in <span class="font-editorial-italic text-editorial-italic">London</span> for global visionaries.
+      </p>
+</section>
+<!-- Marquee Hero Strip -->
+<div class="w-full bg-primary-container/10 border-y border-primary/30 py-4 overflow-hidden mb-section-gap">
+<div class="marquee-content flex gap-gutter">
+<!-- Repeated items for continuous loop -->
+<div class="flex items-center gap-gutter text-primary font-label-caps text-label-caps">
+<span>CURATED EXCELLENCE</span> <span class="material-symbols-outlined">star</span>
+<span>BESPOKE DIGITAL CRAFT</span> <span class="material-symbols-outlined">star</span>
+<span>LONDON BASED STUDIO</span> <span class="material-symbols-outlined">star</span>
+<span>STRATEGY &amp; DESIGN</span> <span class="material-symbols-outlined">star</span>
+</div>
+<div class="flex items-center gap-gutter text-primary font-label-caps text-label-caps">
+<span>CURATED EXCELLENCE</span> <span class="material-symbols-outlined">star</span>
+<span>BESPOKE DIGITAL CRAFT</span> <span class="material-symbols-outlined">star</span>
+<span>LONDON BASED STUDIO</span> <span class="material-symbols-outlined">star</span>
+<span>STRATEGY &amp; DESIGN</span> <span class="material-symbols-outlined">star</span>
+</div>
+</div>
+</div>
+<!-- Vertical Showcases -->
+<section class="px-margin-mobile md:px-margin-desktop space-y-section-gap">
+<!-- Showcase 1: Premium -->
+<article class="grid grid-cols-1 lg:grid-cols-2 gap-gutter items-center group">
+<div class="relative overflow-hidden border border-primary/20 aspect-[4/5] md:aspect-video lg:aspect-[4/5] bg-surface-container-low">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A premium website mockup displayed on a sleek, high-end laptop sitting on a dark marble desk. The website design is minimalist with bold gold typography and deep black backgrounds, reflecting an elite London aesthetic. Soft cinematic lighting hits the edge of the device, creating a subtle glow. The surrounding environment is dark and professional, emphasizing the high-craft digital output." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSYehds3JFUDsogIfpHcX4mi8xFzSqqEWM2MEKaALJPkHco25APs69LOV2QkHUvJl1wOjnfWBMQMc5k3TK6tKzHjWexmpY7zUCxO2djxv_G4Eqi8AJn6poVuL8SNvB8Bir21vsLKwTVT6PfYYhosrL4Q5F3yu3xMsS38JxiapMMktwvVHnHH5TQHV3iNCddeNUEHHf77oin3UVKolRoJAWjYYYvltgvtCONynZeqXFIBg_--uUo0ZjQ5K2SPduvAsNIK6GANHPIoY"/>
+<div class="absolute top-8 left-8 bg-background/80 backdrop-blur-md border border-primary px-4 py-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+<span class="font-label-caps text-label-caps text-primary">PREMIUM TIER</span>
+</div>
+</div>
+<div class="space-y-6 lg:pl-16">
+<span class="font-label-caps text-label-caps text-on-surface-variant">REAL ESTATE &amp; LIFESTYLE</span>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg leading-tight">Vanguard <span class="font-editorial-italic text-editorial-italic">Estates</span></h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">
+            A full-scale digital ecosystem for London's most exclusive property portfolio. Featuring custom WebGL interactions and immersive 4K video integration.
+          </p>
+<div class="pt-4 flex flex-wrap gap-2">
+<span class="border border-outline-variant px-3 py-1 font-label-caps text-[10px]">UX ARCHITECTURE</span>
+<span class="border border-outline-variant px-3 py-1 font-label-caps text-[10px]">WEBGL DEVELOPMENT</span>
+<span class="border border-outline-variant px-3 py-1 font-label-caps text-[10px]">BRAND IDENTITY</span>
+</div>
+<button class="mt-8 border border-primary px-8 py-4 font-label-caps text-label-caps hover:bg-primary hover:text-background transition-all duration-300 relative">
+            VIEW LIVE SITE
+            <div class="absolute inset-0 gold-glow -z-10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</button>
+</div>
+</article>
+<!-- Showcase 2: Growth -->
+<article class="grid grid-cols-1 lg:grid-cols-2 gap-gutter items-center group">
+<div class="order-1 lg:order-2 relative overflow-hidden border border-primary/20 aspect-[4/5] md:aspect-video lg:aspect-[4/5] bg-surface-container-low">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A modern smartphone mockup showing a sophisticated mobile application interface with gold accents and dark mode styling. The phone is placed on a textured dark slate surface under a warm, spotlight-like glow that highlights the refined UI details. The image captures the essence of a high-performance growth-tier product for a tech-focused client." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrijCiHfF4rh9L3lneVT9ck62rQLV8duku49kw_Z07hCnL53UVhc0JJNgeFSjgfKK2tvaHuBcgQZzPmz_Z30iETTKWRVb0OCjxR2cFPZy8JJJH-mseFBH0Z8xvanx24jV1hX7G5Wv4ZCY7GHhcMjZD0S-pXNmdr8Peu77g9iEgMGEPi9aWdxPbUxRrtnD8H9u9LcLGUFF6yTrtGpwzSthcVRo0JWbedi2j2rp0t8NO2Q4Ontc7eJtTW3BMYKBOB5VR5WC3TeIdc9k"/>
+<div class="absolute top-8 right-8 bg-background/80 backdrop-blur-md border border-primary px-4 py-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+<span class="font-label-caps text-label-caps text-primary">GROWTH TIER</span>
+</div>
+</div>
+<div class="order-2 lg:order-1 space-y-6 lg:pr-16 lg:text-right flex flex-col lg:items-end">
+<span class="font-label-caps text-label-caps text-on-surface-variant">FINTECH &amp; SAAS</span>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg leading-tight">Aether <span class="font-editorial-italic text-editorial-italic">Finance</span></h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">
+            Scaling a decentralized finance platform through data-driven design and high-conversion landing systems.
+          </p>
+<div class="pt-4 flex flex-wrap gap-2 lg:justify-end">
+<span class="border border-outline-variant px-3 py-1 font-label-caps text-[10px]">PRODUCT DESIGN</span>
+<span class="border border-outline-variant px-3 py-1 font-label-caps text-[10px]">GROWTH STRATEGY</span>
+</div>
+<button class="mt-8 border border-primary px-8 py-4 font-label-caps text-label-caps hover:bg-primary hover:text-background transition-all duration-300 relative">
+            VIEW LIVE SITE
+            <div class="absolute inset-0 gold-glow -z-10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</button>
+</div>
+</article>
+<!-- Showcase 3: Starter -->
+<article class="grid grid-cols-1 lg:grid-cols-2 gap-gutter items-center group">
+<div class="relative overflow-hidden border border-primary/20 aspect-[4/5] md:aspect-video lg:aspect-[4/5] bg-surface-container-low">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A minimalist web platform displayed on a high-resolution desktop monitor within a clean, dark-themed office environment. The UI features stark white typography against a deep charcoal background, punctuated by elegant gold borders. The atmosphere is quiet and focused, emphasizing the precision of a starter-tier build that doesn't compromise on aesthetic luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1waxIsfaZD8rp2rEAyQnrzAhZcZbCM-ivDAwO6zW-2BBVJVV5NQL-0Hpg55vADAnNE0wxmEGVlo0JioFvnmTMfgc5kmUYI3Ro4d3iLf2dif8vrbLemGlkebaer3m8Ze4DttLYHzuA0-iploRYPRrgNh0-txC2qicWnqOOZR9-x9DrW-AmG_c3VTEc7QfWteGAfQK-PHIIVNOxlqavdiZis_aWNek8djC_VDqaqFFzA6A6Ogv69tfnrMZrc91ZeWhiw4nHbHRrcnQ"/>
+<div class="absolute top-8 left-8 bg-background/80 backdrop-blur-md border border-primary px-4 py-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+<span class="font-label-caps text-label-caps text-primary">STARTER TIER</span>
+</div>
+</div>
+<div class="space-y-6 lg:pl-16">
+<span class="font-label-caps text-label-caps text-on-surface-variant">CREATIVE AGENCY</span>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg leading-tight">Studio <span class="font-editorial-italic text-editorial-italic">Lumos</span></h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md">
+            Rapid launch for a boutique photography studio, focusing on atmospheric storytelling and seamless mobile performance.
+          </p>
+<div class="pt-4 flex flex-wrap gap-2">
+<span class="border border-outline-variant px-3 py-1 font-label-caps text-[10px]">CONTENT STRATEGY</span>
+<span class="border border-outline-variant px-3 py-1 font-label-caps text-[10px]">VISUAL SYSTEMS</span>
+</div>
+<button class="mt-8 border border-primary px-8 py-4 font-label-caps text-label-caps hover:bg-primary hover:text-background transition-all duration-300 relative">
+            VIEW LIVE SITE
+            <div class="absolute inset-0 gold-glow -z-10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</button>
+</div>
+</article>
+</section>
+<!-- Secondary Archive Grid -->
+<section class="px-margin-mobile md:px-margin-desktop py-section-gap">
+<div class="flex justify-between items-end mb-16 border-b border-primary/30 pb-8">
+<h3 class="font-headline-lg-mobile md:text-[48px] font-bold">Selected <span class="font-editorial-italic text-editorial-italic">Archive</span></h3>
+<span class="font-label-caps text-label-caps text-primary hidden md:block">2021—2024</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Archive Item 1 -->
+<div class="group cursor-pointer">
+<div class="aspect-[4/3] mb-6 overflow-hidden border border-primary/10">
+<img class="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0" data-alt="A dark-toned, professional photography portfolio displayed on a tablet. The screen shows a grid of high-fashion images. The lighting in the scene is moody and artistic, with the gold edges of the tablet reflecting a warm ambient light. This represents the sleek and curated nature of Hallmark Studio's archive projects." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIKkPDPE_jdrdmPKMZ7CSSIuTfHY2c-IDYKEVnJruZDFAKs7smaOXol76H8iH-23izy1zRjiLjuwhi47x6qTX2KRta8uAZ76SW7E1IuAMKQDMC3-m5cY3vw4lmatkmOi6RyUuX13QdZTxTUZtcn9wtJOhgUT6Nk1EYAlvnVZk00B5u9g49h78v2Kka-bNDvE1LW09LchOke_1KdbmQo0tnUgYcXRTW9I4Mwil6xZcWKj5Wof4tnMzOltHWGuagyVMkdeA5y7kXP5o"/>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-body-lg font-bold group-hover:text-primary transition-colors">Nova Architecture</h4>
+<span class="font-editorial-italic text-editorial-italic text-sm text-on-surface-variant">Design System</span>
+</div>
+<span class="border border-outline-variant px-2 py-0.5 font-label-caps text-[10px]">ARCHITECTURE</span>
+</div>
+</div>
+<!-- Archive Item 2 -->
+<div class="group cursor-pointer">
+<div class="aspect-[4/3] mb-6 overflow-hidden border border-primary/10">
+<img class="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0" data-alt="An elegant analytics dashboard with gold-accented data visualizations shown on a curved monitor. The scene is set in a dark, high-tech workspace with minimal distractions. The deep black levels and golden highlights of the UI showcase the studio's ability to turn complex data into a premium visual experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBldeQK0wWoLRZPlWxAhURDszC7JxeKiSX_MynkWa7xt19YQ022jSuwp-nh0kEcZjzOIegX52wBOBN6o8OxjCjvpVyg8AXRAAS1-axVTzr6eZKUc8oLSrVUAyVYSEwlJVGGbHMWqw54kfK2NbR-MrHtGVZJqnKif_KwDEJjITAeCsttCBrzpS3Gyj5dbdiBLgRYqZesHlKjnp8ROm-IGJNz0kxHpVx6qBE9L8RQ_gq_BzjBFA8vL1p2CabWHqIJ4l_5XHJKASIWCPE"/>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-body-lg font-bold group-hover:text-primary transition-colors">Kinetix Data</h4>
+<span class="font-editorial-italic text-editorial-italic text-sm text-on-surface-variant">Web Application</span>
+</div>
+<span class="border border-outline-variant px-2 py-0.5 font-label-caps text-[10px]">TECH</span>
+</div>
+</div>
+<!-- Archive Item 3 -->
+<div class="group cursor-pointer">
+<div class="aspect-[4/3] mb-6 overflow-hidden border border-primary/10">
+<img class="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0" data-alt="A minimalist e-commerce storefront for a luxury watch brand. The mockup is seen from an angled perspective, highlighting the crisp typography and high-contrast layout. Gold UI elements like buttons and borders emphasize the premium nature of the brand, while the dark background keeps the focus on the product imagery." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-i23ZKIYrL4AjtvioVCkn33txQ-rL6mPN4-045HRWj5xMNR7EJDoPUp1vGtkxgPel3obawFc49qljY1zWIbREHBdUEEG6J3b_IgL8NP4Bd0wIq36X4TDaTunX6eoSidkgJly2MK6-37Wib2Sc7dR_QW-7QdZr19fybq5kXEK1Lwx-ZHaxT3gIznE9VVq9zq0ERTcCkSNlyMyHdYf2c6QnV_a4b_8DfZOlDvJbOCjUhPJEgdpYQfvrxIertPbFaTgI7q_AkQA2t2o"/>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-body-lg font-bold group-hover:text-primary transition-colors">Heirloom Watches</h4>
+<span class="font-editorial-italic text-editorial-italic text-sm text-on-surface-variant">E-Commerce</span>
+</div>
+<span class="border border-outline-variant px-2 py-0.5 font-label-caps text-[10px]">LUXURY</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low border-t border-primary/30">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter px-margin-mobile md:px-margin-desktop py-section-gap w-full max-w-container-max mx-auto">
+<div class="space-y-8">
+<div class="font-headline-lg text-primary">HALLMARK STUDIO</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          Crafting digital identities for those who demand <span class="font-editorial-italic text-editorial-italic">more</span>.
+        </p>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="font-label-caps text-label-caps text-primary mb-4">SITEMAP</h5>
+<a class="font-body-md text-on-surface hover:text-primary transition-opacity duration-300" href="#">Work</a>
+<a class="font-body-md text-on-surface hover:text-primary transition-opacity duration-300" href="#">Pricing</a>
+<a class="font-body-md text-on-surface hover:text-primary transition-opacity duration-300" href="#">Contact</a>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="font-label-caps text-label-caps text-primary mb-4">LEGAL</h5>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-opacity duration-300" href="#">Privacy Policy</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-opacity duration-300" href="#">Terms of Service</a>
+<div class="mt-8 font-body-md text-on-surface-variant text-sm">
+          © 2024 Hallmark Studio. Registered in England &amp; Wales.
+        </div>
+</div>
+</div>
+</footer>
+</body></html>

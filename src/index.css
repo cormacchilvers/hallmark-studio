@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    cursor: none !important;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #111111;
+    color: #E8E8E4;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: #C9A84C;
+    color: #111111;
+  }
+}
+
+@layer components {
+  .font-serif-italic {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+  }
+
+  .gold-gradient {
+    background: linear-gradient(135deg, #C9A84C, #f0cc70, #C9A84C);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .card-dark {
+    background: #1a1a1a;
+    border: 1px solid rgba(201, 168, 76, 0.25);
+  }
+
+  .btn-gold {
+    background: #C9A84C;
+    color: #111111;
+    font-weight: 700;
+    padding: 0.75rem 1.75rem;
+    border-radius: 9999px;
+    transition: all 0.3s ease;
+    display: inline-block;
+  }
+
+  .btn-gold:hover {
+    background: #f0cc70;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 30px rgba(201, 168, 76, 0.35);
+  }
+
+  .btn-outline {
+    border: 1px solid #E8E8E4;
+    color: #E8E8E4;
+    font-weight: 600;
+    padding: 0.75rem 1.75rem;
+    border-radius: 9999px;
+    transition: all 0.3s ease;
+    display: inline-block;
+  }
+
+  .btn-outline:hover {
+    border-color: #C9A84C;
+    color: #C9A84C;
+    transform: translateY(-1px);
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #111111;
+}
+::-webkit-scrollbar-thumb {
+  background: #C9A84C;
+  border-radius: 2px;
+}
+
+/* Ticker animation */
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-track {
+  animation: ticker 20s linear infinite;
+  will-change: transform;
+}
+
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+/* Particle canvas */
+#particle-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Light sweep across hero */
+@keyframes lightSweep {
+  0%   { transform: translateX(-100%) skewX(-10deg); opacity: 0; }
+  5%   { opacity: 1; }
+  45%  { opacity: 1; }
+  50%  { transform: translateX(350%) skewX(-10deg); opacity: 0; }
+  51%  { transform: translateX(-100%) skewX(-10deg); opacity: 0; }
+  100% { transform: translateX(-100%) skewX(-10deg); opacity: 0; }
+}
+
+/* Macbook screen crossfade */
+@keyframes screenFade {
+  0%, 30% { opacity: 1; }
+  35%, 95% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Gold glow */
+.gold-glow {
+  box-shadow: 0 0 80px rgba(201, 168, 76, 0.15), 0 0 160px rgba(201, 168, 76, 0.08);
+}
+
+/* FAQ accordion */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+}
+.faq-answer.open {
+  max-height: 300px;
+}

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HALLMARK STUDIO | Premium Web Design Chelmsford</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&amp;family=Playfair+Display:ital,wght@1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .marquee-content {
+            display: inline-block;
+            animation: scroll 30s linear infinite;
+        }
+        .glow-gold {
+            background: radial-gradient(circle at center, rgba(201, 168, 76, 0.15) 0%, rgba(17, 17, 17, 0) 70%);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error-container": "#ffdad6",
+                        "tertiary": "#b9c4ff",
+                        "on-background": "#e5e2e1",
+                        "on-tertiary-container": "#2e3b77",
+                        "on-surface-variant": "#d0c5b2",
+                        "primary-fixed": "#ffe08f",
+                        "outline": "#99907e",
+                        "on-primary-fixed-variant": "#584400",
+                        "inverse-primary": "#755b00",
+                        "on-primary-container": "#503d00",
+                        "surface-container": "#1f2020",
+                        "on-secondary-fixed-variant": "#464744",
+                        "surface-container-low": "#1b1c1c",
+                        "primary": "#e6c364",
+                        "secondary": "#c6c7c3",
+                        "outline-variant": "#4d4637",
+                        "on-primary-fixed": "#241a00",
+                        "tertiary-container": "#9ba8eb",
+                        "on-secondary": "#2f312e",
+                        "primary-container": "#c9a84c",
+                        "surface-variant": "#353535",
+                        "tertiary-fixed-dim": "#b9c3ff",
+                        "inverse-on-surface": "#303030",
+                        "surface-dim": "#131313",
+                        "on-surface": "#e5e2e1",
+                        "error": "#ffb4ab",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-tertiary": "#1e2b66",
+                        "background": "#131313",
+                        "surface-container-highest": "#353535",
+                        "inverse-surface": "#e5e2e1",
+                        "secondary-container": "#484947",
+                        "surface-tint": "#e6c364",
+                        "surface": "#131313",
+                        "primary-fixed-dim": "#e6c364",
+                        "on-secondary-container": "#b8b9b5",
+                        "on-error": "#690005",
+                        "tertiary-fixed": "#dde1ff",
+                        "on-tertiary-fixed": "#041451",
+                        "on-primary": "#3d2e00",
+                        "surface-container-high": "#2a2a2a",
+                        "surface-bright": "#393939",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed": "#1a1c1a",
+                        "secondary-fixed": "#e3e3df",
+                        "secondary-fixed-dim": "#c6c7c3",
+                        "on-tertiary-fixed-variant": "#35437e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "margin-mobile": "24px",
+                        "margin-desktop": "80px",
+                        "gutter": "32px",
+                        "section-gap": "160px",
+                        "container-max": "1440px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "display-xl-mobile": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"],
+                        "editorial-italic": ["Playfair Display"],
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "display-xl": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["64px", {"lineHeight": "120%", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "display-xl-mobile": ["64px", {"lineHeight": "110%", "letterSpacing": "-0.04em", "fontWeight": "900"}],
+                        "headline-lg-mobile": ["40px", {"lineHeight": "120%", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "body-md": ["16px", {"lineHeight": "160%", "fontWeight": "400"}],
+                        "editorial-italic": ["1.2em", {"lineHeight": "inherit", "fontWeight": "400"}],
+                        "body-lg": ["20px", {"lineHeight": "160%", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "100%", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "display-xl": ["120px", {"lineHeight": "110%", "letterSpacing": "-0.04em", "fontWeight": "900"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface selection:bg-primary selection:text-background">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-background/80">
+<nav class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-unit w-full max-w-container-max mx-auto">
+<a class="font-headline-lg text-on-surface tracking-tighter text-2xl md:text-3xl" href="/">HALLMARK STUDIO</a>
+<div class="hidden md:flex gap-10 items-center">
+<a class="text-on-surface font-label-caps hover:text-primary transition-colors duration-300" href="#">Work</a>
+<a class="text-on-surface font-label-caps hover:text-primary transition-colors duration-300" href="#">Pricing</a>
+<a class="text-on-surface font-label-caps hover:text-primary transition-colors duration-300" href="#">Contact</a>
+<button class="border border-primary px-6 py-3 font-label-caps text-primary hover:bg-primary hover:text-background transition-all duration-300 active:scale-95">
+                    Get a Quote
+                </button>
+</div>
+<!-- Mobile Menu Icon -->
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</nav>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center pt-24 overflow-hidden bg-[#111111]">
+<div class="glow-gold absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none"></div>
+<div class="container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 lg:grid-cols-2 gap-gutter items-center relative z-10">
+<div class="flex flex-col gap-6">
+<span class="font-label-caps text-primary tracking-widest bg-primary/10 w-fit px-3 py-1 border border-primary/20">WEB DESIGN · CHELMSFORD ESSEX</span>
+<h1 class="flex flex-col">
+<span class="font-headline-lg-mobile md:font-headline-lg text-on-surface mb-2">Your competitors have a website.</span>
+<span class="font-editorial-italic text-primary text-5xl md:text-7xl italic">You'll have a weapon.</span>
+</h1>
+<p class="font-body-lg text-on-surface-variant max-w-lg">
+                        Bespoke digital experiences for high-ambition brands. Built from the ground up in Chelmsford, Essex. No templates, just elite craftsmanship.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4 mt-8">
+<button class="bg-primary-container text-on-primary-container px-10 py-5 font-label-caps hover:bg-primary transition-all duration-300 shadow-[0_0_20px_rgba(201,168,76,0.2)]">
+                            See Our Work
+                        </button>
+<button class="border border-on-surface/30 text-on-surface px-10 py-5 font-label-caps hover:border-primary hover:text-primary transition-all duration-300">
+                            Get a Quote
+                        </button>
+</div>
+</div>
+<div class="relative hidden lg:block">
+<div class="absolute -inset-10 glow-gold rounded-full opacity-50 blur-3xl"></div>
+<div class="relative transform rotate-3 hover:rotate-0 transition-transform duration-700">
+<img alt="Premium Device Mockup" class="rounded-lg shadow-2xl border border-primary/20" data-alt="A high-end, sleek laptop and smartphone mockup positioned at an elegant angle on a dark, minimalist surface. The scene is bathed in a warm, sophisticated golden glow that highlights the premium build quality of the agency's web design work. The aesthetic is elite and editorial, using a deep black background with soft, golden atmospheric lighting to create a sense of exclusivity and technological precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPsgO8NdwbBswCDDGHU_FqFwDhC2ufTPC0L80dPQI6ioK6smL_ZHX7gHG9CI_ZzcbHRvOaBkoc6NMklrEjDLHcJfa26kL2TlARaiUi8bk-ofRjKFMYWS6IVKkTNhMzoVrCxcFNV-LM2shfd8ino49-c2nomcCxFNW-pcmHFoIPNxq-CBsq9a0ST5GDIGPFx7YJFHt7NFgfrypPplF3gpXPny-_qkvZfqTUO4UUM5XFNS9wn-kTqdRFc25AALeeseH0tm6wcamfDg4"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Marquee -->
+<div class="bg-surface-container-lowest py-6 border-y border-primary/20 marquee-container">
+<div class="marquee-content font-label-caps text-primary text-xl flex gap-12 items-center">
+<span>WEB DESIGN · CHELMSFORD ESSEX · FROM £599 · STAND OUT · STAY AHEAD · PREMIUM BUILDS · NO TEMPLATES · CUSTOM EVERY TIME ·</span>
+<span>WEB DESIGN · CHELMSFORD ESSEX · FROM £599 · STAND OUT · STAY AHEAD · PREMIUM BUILDS · NO TEMPLATES · CUSTOM EVERY TIME ·</span>
+<span>WEB DESIGN · CHELMSFORD ESSEX · FROM £599 · STAND OUT · STAY AHEAD · PREMIUM BUILDS · NO TEMPLATES · CUSTOM EVERY TIME ·</span>
+<span>WEB DESIGN · CHELMSFORD ESSEX · FROM £599 · STAND OUT · STAY AHEAD · PREMIUM BUILDS · NO TEMPLATES · CUSTOM EVERY TIME ·</span>
+</div>
+</div>
+<!-- Stats Section -->
+<section class="py-section-gap">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter text-center">
+<div class="flex flex-col gap-2">
+<span class="text-5xl md:text-7xl font-display-xl-mobile md:font-display-xl text-primary font-black">9</span>
+<span class="font-label-caps text-on-surface-variant">Sites Built</span>
+</div>
+<div class="flex flex-col gap-2">
+<span class="text-5xl md:text-7xl font-display-xl-mobile md:font-display-xl text-primary font-black">3</span>
+<span class="font-label-caps text-on-surface-variant">Packages</span>
+</div>
+<div class="flex flex-col gap-2">
+<span class="text-5xl md:text-7xl font-display-xl-mobile md:font-display-xl text-primary font-black">48<small class="text-3xl">hr</small></span>
+<span class="font-label-caps text-on-surface-variant">Turnaround</span>
+</div>
+<div class="flex flex-col gap-2">
+<span class="text-5xl md:text-7xl font-display-xl-mobile md:font-display-xl text-primary font-black">100%</span>
+<span class="font-label-caps text-on-surface-variant">Custom</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Portfolio Teaser -->
+<section class="py-section-gap bg-surface-container-low">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="mb-16">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-on-surface mb-2">The Work.</h2>
+<p class="font-label-caps text-primary">Three tiers. One standard.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Card 1 -->
+<div class="group cursor-pointer">
+<div class="relative overflow-hidden mb-6 border border-primary/10 aspect-[4/5]">
+<img alt="Cornerstone Builders Project" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" data-alt="A professional architectural website layout showcasing high-end property development projects. The image captures a clean, structured digital interface with bold typography and high-contrast black and white photography of modern buildings. The scene is presented in a dark, atmospheric UI context with delicate gold accents, emphasizing the elite craftsmanship of the web design agency." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKjQiLcysjapjdzyWLlhAiECcCRfwXzx7LtuD0pr2XMkzCa9Wnd4THsGRN3ZZdtVq0V16CAThJSsIiubJ2RG8XgaJT9GFsu7Bb0Uv6qfH606JD-ZGybbGGWgnnZlasRUDue7t0btvPwBVB-H-FEwJ4RqFkis9eCk_0T0DtJCFoJpihpsABUEhg3WhqLyaZ3OaAwUr936jwagq03_oGnt7iwG6wai_NruDbpWHikFa6Hn6fQFlb93EkM7P0LBnKZCWQupkH64PEpFg"/>
+<div class="absolute top-4 left-4 bg-primary text-background px-3 py-1 font-label-caps">STARTER</div>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<h3 class="font-headline-lg-mobile text-2xl mb-1 group-hover:text-primary transition-colors">Cornerstone Builders</h3>
+<p class="font-editorial-italic text-on-surface-variant italic">Full Responsive Site</p>
+</div>
+<span class="font-label-caps text-primary">£599+</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group cursor-pointer">
+<div class="relative overflow-hidden mb-6 border border-primary/10 aspect-[4/5]">
+<img alt="Blade &amp; Co Project" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" data-alt="A luxury lifestyle and grooming brand website featuring artisanal products. The digital layout uses sophisticated serif typography and cinematic close-up photography. The interface is set against a dark, moody background with subtle golden highlights, reflecting a bespoke and high-craft aesthetic consistent with a premium London creative agency." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwVe2XaMHYkA3Bckw5-h5UXS1Fh9Wcfv5o1iCIasOhDQ2qE2pKb6Buiy8D49J4t4pGkYx4UdnQ64aY59LMCj4X5mJRzjPjAnSg4WOBlU6olTBmqzdmcRUL8KStsdUduR_YQEnnk7tTTixZYBIWyZ5VM7twsRFgyTD-MSEhhrBPPvUepxIcrzc6XALivWbRTBs5fYr1PZvyAXH_VKeeARAq0Hj9ouvKYrav1L7DKKJlQXqn4dNfI05qcv8TJZ5yPdv4375tcFnfGUY"/>
+<div class="absolute top-4 left-4 bg-primary text-background px-3 py-1 font-label-caps">GROWTH</div>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<h3 class="font-headline-lg-mobile text-2xl mb-1 group-hover:text-primary transition-colors">Blade &amp; Co</h3>
+<p class="font-editorial-italic text-on-surface-variant italic">E-commerce Experience</p>
+</div>
+<span class="font-label-caps text-primary">£999+</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group cursor-pointer">
+<div class="relative overflow-hidden mb-6 border border-primary/10 aspect-[4/5]">
+<img alt="Lumière Beauty Project" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110" data-alt="A high-fashion beauty brand website featuring a minimalist yet impactful design with full-screen editorial photography. The interface utilizes delicate 1px borders and massive, elegant typography. The overall visual style is cinematic and high-contrast, fitting for an exclusive brand seeking a unique digital identity in a competitive market." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWdd1Sv3U6FoHCsL6HJAkSLCGEC1ChXkEPqbpsAwbHDhkLmYeImrnipv6kDMklQWgJ4S4uCTSWY3inhPuV8Tey_QjqqvlgmzWFD2BM0UQLzq8CSi0WTF7vlF9mQwXCJxjsz_G71cWRHgXA4fcxNVYd1YM2pRS0wxRq7eNyfYnKa0ch6FiMcPyH101xZimGFqkABuoiVJKNh1uLYNwnlF9mbFRrkNWzw1KM0tZD4-8NG43WihMe-4A9IG9G9pR7f7pN5FtV6vZCdfk"/>
+<div class="absolute top-4 left-4 bg-primary text-background px-3 py-1 font-label-caps">PREMIUM</div>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<h3 class="font-headline-lg-mobile text-2xl mb-1 group-hover:text-primary transition-colors">Lumière Beauty</h3>
+<p class="font-editorial-italic text-on-surface-variant italic">Bespoke Enterprise</p>
+</div>
+<span class="font-label-caps text-primary">£1,799+</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing Teaser -->
+<section class="py-section-gap">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center mb-24">
+<h2 class="font-editorial-italic text-primary text-4xl md:text-6xl italic">Three packages. Zero compromise.</h2>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Starter -->
+<div class="border border-outline-variant p-10 hover:border-primary transition-colors group">
+<span class="font-label-caps text-primary mb-8 block">THE STARTER</span>
+<div class="flex items-baseline gap-1 mb-8">
+<span class="text-4xl font-headline-lg text-on-surface">£599</span>
+<span class="text-on-surface-variant font-body-md">Fixed Price</span>
+</div>
+<ul class="flex flex-col gap-4 mb-12 font-body-md text-on-surface-variant">
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-sm">check</span> Single Page Custom Build</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-sm">check</span> Mobile Responsive</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-sm">check</span> 48hr Delivery</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-sm">check</span> SEO Foundation</li>
+</ul>
+<button class="w-full border border-primary text-primary py-4 font-label-caps group-hover:bg-primary group-hover:text-background transition-all">Select Plan</button>
+</div>
+<!-- Growth -->
+<div class="border border-primary p-10 relative shadow-[0_0_30px_rgba(201,168,76,0.1)]">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-background px-4 py-1 font-label-caps text-[10px]">MOST POPULAR</div>
+<span class="font-label-caps text-primary mb-8 block">THE GROWTH</span>
+<div class="flex items-baseline gap-1 mb-8">
+<span class="text-4xl font-headline-lg text-on-surface">£999</span>
+<span class="text-on-surface-variant font-body-md">Fixed Price</span>
+</div>
+<ul class="flex flex-col gap-4 mb-12 font-body-md text-on-surface-variant">
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-sm">check</span> 5-Page Bespoke Design</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-sm">check</span> CMS Integration</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-sm">check</span> Performance Optimized</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-sm">check</span> Training &amp; Support</li>
+</ul>
+<button class="w-full bg-primary text-background py-4 font-label-caps hover:bg-white hover:text-black transition-all">Select Plan</button>
+</div>
+<!-- Premium -->
+<div class="border border-outline-variant p-10 hover:border-primary transition-colors group">
+<span class="font-label-caps text-primary mb-8 block">THE PREMIUM</span>
+<div class="flex items-baseline gap-1 mb-8">
+<span class="text-4xl font-headline-lg text-on-surface">£1,799</span>
+<span class="text-on-surface-variant font-body-md">Fixed Price</span>
+</div>
+<ul class="flex flex-col gap-4 mb-12 font-body-md text-on-surface-variant">
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-sm">check</span> Full E-commerce / Web App</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-sm">check</span> Advanced Animations</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-sm">check</span> Priority Concierge</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-sm">check</span> Custom API Integrations</li>
+</ul>
+<button class="w-full border border-primary text-primary py-4 font-label-caps group-hover:bg-primary group-hover:text-background transition-all">Select Plan</button>
+</div>
+</div>
+</div>
+</section>
+<!-- About Section -->
+<section class="py-section-gap border-t border-primary/20">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 lg:grid-cols-2 gap-section-gap items-center">
+<div>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-on-surface mb-8">We are Hallmark Studio.</h2>
+<p class="font-body-lg text-on-surface-variant mb-6">
+                        Born from a desire to escape the "template-factory" model of modern web agencies. We don't use themes, we don't follow trends blindly, and we certainly don't compromise.
+                    </p>
+<p class="font-body-lg text-on-surface-variant">
+                        Based in Chelmsford, we serve clients who demand a presence as formidable as their business goals.
+                    </p>
+</div>
+<div class="bg-surface-container-high p-margin-mobile md:p-12 relative overflow-hidden border border-primary/30">
+<div class="absolute -right-10 -bottom-10 opacity-5">
+<span class="font-display-xl text-[200px]">HS</span>
+</div>
+<div class="relative z-10">
+<span class="font-label-caps text-primary block mb-10">EST. 2025</span>
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">location_on</span>
+<span class="font-body-md">Chelmsford, Essex, UK</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">mail</span>
+<span class="font-body-md">craft@hallmarkstudio.com</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">call</span>
+<span class="font-body-md">+44 (0) 1245 000000</span>
+</div>
+</div>
+<div class="mt-12 flex gap-6">
+<a class="font-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">Instagram</a>
+<a class="font-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">LinkedIn</a>
+<a class="font-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">Twitter</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-section-gap text-center relative overflow-hidden">
+<div class="glow-gold absolute inset-0 opacity-30"></div>
+<div class="relative z-10 max-w-2xl mx-auto px-margin-mobile">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-on-surface mb-10">Ready to stand out?</h2>
+<div class="flex flex-col sm:flex-row justify-center gap-6">
+<button class="bg-primary-container text-on-primary-container px-12 py-6 font-label-caps hover:bg-primary transition-all text-lg shadow-xl">
+                        Start Your Project
+                    </button>
+<a class="flex items-center justify-center gap-3 border border-on-surface/30 px-12 py-6 font-label-caps hover:border-primary hover:text-primary transition-all text-lg" href="tel:+441245000000">
+<span class="material-symbols-outlined">call</span>
+                        Book a Call
+                    </a>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low border-t border-primary/30 py-section-gap">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="flex flex-col gap-6">
+<span class="font-headline-lg text-primary text-2xl md:text-3xl">HALLMARK STUDIO</span>
+<p class="font-body-md text-on-surface-variant">
+                    Bespoke web design and digital strategy for the modern high-performance brand.
+                </p>
+<span class="font-body-md text-on-surface-variant/60">© 2024 Hallmark Studio. Registered in England &amp; Wales.</span>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-label-caps text-primary">Quick Links</span>
+<nav class="flex flex-col gap-3">
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-opacity duration-300" href="#">Work</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-opacity duration-300" href="#">Pricing</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-opacity duration-300" href="#">Contact</a>
+</nav>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-label-caps text-primary">Legals</span>
+<nav class="flex flex-col gap-3">
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-opacity duration-300" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant font-body-md hover:text-primary transition-opacity duration-300" href="#">Terms of Service</a>
+</nav>
+<div class="mt-8">
+<span class="font-editorial-italic text-on-surface italic text-lg">Excellence by Design.</span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
