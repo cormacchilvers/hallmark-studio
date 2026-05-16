@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import Marquee from '../components/Marquee'
 import DeviceMockups from '../components/DeviceMockups'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -31,13 +30,6 @@ const cardVariants = {
     },
   }),
 }
-
-const stats = [
-  { value: 9, suffix: '', label: 'Sites Built' },
-  { value: 3, suffix: '', label: 'Packages' },
-  { value: 48, suffix: 'hr', label: 'Turnaround' },
-  { value: 100, suffix: '%', label: 'Custom' },
-]
 
 const portfolio = [
   {
@@ -69,20 +61,6 @@ const portfolio = [
   },
 ]
 
-const pricingTeaser = [
-  {
-    name: 'Essential',
-    desc: 'A fully custom single-page site built to win local business. Fast, mobile-first, and ready to launch.',
-  },
-  {
-    name: 'Studio',
-    desc: 'Multi-page, animated, and built to grow with your business. Everything you need to stand out online.',
-  },
-  {
-    name: 'Signature',
-    desc: 'Our flagship build. Cinematic, immersive, and unlike anything your competitors have.',
-  },
-]
 
 function GoldParticles() {
   const canvasRef = useRef(null)
@@ -193,47 +171,6 @@ function FilmGrain() {
   )
 }
 
-function StatCounter({ value, suffix, label, index }) {
-  const ref = useRef(null)
-
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const obj = { val: 0 }
-    const tween = gsap.to(obj, {
-      val: value,
-      duration: 1.8,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: el,
-        start: 'top 85%',
-        once: true,
-      },
-      onUpdate: () => {
-        el.textContent = Math.round(obj.val) + suffix
-      },
-    })
-    return () => tween.kill()
-  }, [value, suffix])
-
-  return (
-    <motion.div
-      variants={fadeUp}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      custom={index}
-      className="text-center"
-    >
-      <div ref={ref} className="text-5xl font-black text-gold mb-2">
-        0{suffix}
-      </div>
-      <div className="text-cream/50 text-sm tracking-wide uppercase font-medium">
-        {label}
-      </div>
-    </motion.div>
-  )
-}
 
 export default function Home() {
   const headlineRef = useRef(null)
@@ -307,12 +244,12 @@ export default function Home() {
 
         {/* Letterbox bars */}
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 70, background: '#000', pointerEvents: 'none', zIndex: 20 }} />
-        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 70, background: '#000', pointerEvents: 'none', zIndex: 20 }} />
+        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 70, background: '#111111', pointerEvents: 'none', zIndex: 20 }} />
 
         {/* Film grain */}
         <FilmGrain />
 
-        <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-16 relative z-10">
+        <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pt-10 pb-2 relative z-10">
           {/* Left copy */}
           <div>
             <motion.p
@@ -347,7 +284,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.9 }}
-              className="text-cream/60 text-lg leading-relaxed mb-10 max-w-md"
+              className="text-cream/60 text-lg leading-relaxed mb-6 max-w-md"
             >
               Premium custom websites for ambitious local businesses.
               Built to convert. Designed to impress.
@@ -357,7 +294,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.1 }}
-              className="flex flex-wrap gap-4"
+              className="flex flex-wrap gap-4 mb-0"
             >
               <Link to="/work" className="btn-gold">See Our Work</Link>
               <Link to="/contact" className="btn-outline">Get a Quote</Link>
@@ -365,7 +302,7 @@ export default function Home() {
           </div>
 
           {/* Right: devices */}
-          <div className="hidden lg:flex justify-center items-end">
+          <div className="hidden lg:flex justify-center items-center">
             <DeviceMockups />
           </div>
         </div>
@@ -383,26 +320,6 @@ export default function Home() {
             className="w-px h-12 bg-gradient-to-b from-gold/60 to-transparent mx-auto"
           />
         </motion.div>
-      </section>
-
-      {/* ── MARQUEE ───────────────────────────── */}
-      <Marquee />
-
-      {/* ── STATS STRIP ──────────────────────── */}
-      <section className="py-16 border-b border-gold/10">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, i) => (
-              <StatCounter
-                key={stat.label}
-                value={stat.value}
-                suffix={stat.suffix}
-                label={stat.label}
-                index={i}
-              />
-            ))}
-          </div>
-        </div>
       </section>
 
       {/* ── PORTFOLIO ────────────────────────── */}
@@ -427,7 +344,7 @@ export default function Home() {
             custom={1}
             className="font-serif-italic text-gold text-xl mb-14"
           >
-            Three tiers. One standard.
+            From concept to live — see what we build.
           </motion.p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -482,16 +399,9 @@ export default function Home() {
                   </div>
 
                   <div className="p-6 flex flex-col flex-1">
-                    <span
-                      className="text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full mb-4 inline-block"
-                      style={{ background: `${item.accent}20`, color: item.accent }}
-                    >
-                      {item.tier}
-                    </span>
                     <h3 className="text-cream font-bold text-xl mb-2">{item.name}</h3>
                     <p className="text-cream/50 text-sm mb-4 flex-1">{item.desc}</p>
                     <div className="flex items-center justify-between mt-auto">
-                      <span className="text-gold text-sm font-semibold">{item.price}</span>
                       <a
                         href={item.url}
                         target="_blank"
@@ -506,55 +416,6 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ── PRICING TEASER ────────────────────── */}
-      <section className="py-24 bg-card/30">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-5xl font-black text-cream mb-2">Three packages.</h2>
-            <p className="font-serif-italic text-gold text-2xl">Zero compromise.</p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            {pricingTeaser.map((pkg, i) => (
-              <motion.div
-                key={pkg.name}
-                initial={{ opacity: 0, scale: 0.92, y: 30 }}
-                whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{
-                  type: 'spring',
-                  stiffness: 200,
-                  damping: 20,
-                  delay: i * 0.12,
-                }}
-                className="card-dark rounded-2xl p-8"
-              >
-                <p className="text-cream/40 text-sm tracking-widest uppercase font-semibold mb-4">
-                  {pkg.name}
-                </p>
-                <p className="text-cream/70 text-sm leading-relaxed">{pkg.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="text-center"
-          >
-            <Link to="/pricing" className="btn-gold">See Full Pricing</Link>
-          </motion.div>
         </div>
       </section>
 

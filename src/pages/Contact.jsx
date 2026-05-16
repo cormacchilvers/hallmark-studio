@@ -66,7 +66,6 @@ export default function Contact() {
     email: '',
     phone: '',
     business: '',
-    package: '',
     message: '',
   })
   const [sent, setSent] = useState(false)
@@ -90,7 +89,6 @@ export default function Contact() {
           email: form.email,
           phone: form.phone,
           business: form.business,
-          package: form.package,
           message: form.message,
         }),
       })
@@ -197,19 +195,6 @@ export default function Contact() {
                     onChange={handleChange}
                   />
                 </div>
-                <Field
-                  label="Package Interest"
-                  name="package"
-                  as="select"
-                  value={form.package}
-                  onChange={handleChange}
-                >
-                  <option value="">Select a package...</option>
-                  <option value="starter">Starter — £599</option>
-                  <option value="growth">Growth — £999</option>
-                  <option value="premium">Premium — £1,799</option>
-                  <option value="unsure">Not sure yet</option>
-                </Field>
                 <Field
                   label="Message"
                   name="message"

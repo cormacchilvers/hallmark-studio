@@ -22,8 +22,8 @@ export default function DeviceMockups() {
       initial={{ opacity: 0, y: 60 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.9, delay: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-      className="relative flex items-end justify-center"
-      style={{ minHeight: 560 }}
+      className="relative flex items-center justify-center"
+      style={{ minHeight: 680 }}
     >
       {/* Gold atmospheric glow */}
       <div
@@ -32,8 +32,8 @@ export default function DeviceMockups() {
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          width: 660,
-          height: 500,
+          width: 900,
+          height: 700,
           background: 'radial-gradient(ellipse at center, rgba(201,168,76,0.18) 0%, transparent 70%)',
           pointerEvents: 'none',
           zIndex: 0,
@@ -53,32 +53,32 @@ export default function DeviceMockups() {
         {/* Screen lid */}
         <div
           style={{
-            width: 452,
-            height: 293,
+            width: 655,
+            height: 425,
             background: '#2a2a2a',
             borderRadius: '14px 14px 0 0',
             border: '2px solid #444',
             overflow: 'hidden',
-            boxShadow: '0 28px 80px rgba(0,0,0,0.65)',
+            boxShadow: '0 36px 100px rgba(0,0,0,0.7)',
             position: 'relative',
           }}
         >
           {/* Webcam dot */}
           <div style={{
             position: 'absolute',
-            top: 7,
+            top: 10,
             left: '50%',
             transform: 'translateX(-50%)',
-            width: 7,
-            height: 7,
+            width: 10,
+            height: 10,
             background: '#555',
             borderRadius: '50%',
             zIndex: 10,
           }} />
           {/* Screen bezel */}
           <div style={{
-            margin: '23px 14px 7px',
-            height: 252,
+            margin: '33px 20px 10px',
+            height: 365,
             background: '#0a0a0a',
             borderRadius: 6,
             overflow: 'hidden',
@@ -106,22 +106,22 @@ export default function DeviceMockups() {
         {/* Base / hinge */}
         <div
           style={{
-            width: 488,
+            width: 708,
             height: 13,
             background: 'linear-gradient(to bottom, #3a3a3a, #2a2a2a)',
             borderRadius: '0 0 4px 4px',
-            marginLeft: -18,
+            marginLeft: -26,
             boxShadow: '0 6px 24px rgba(0,0,0,0.5)',
           }}
         />
         {/* Keyboard base */}
         <div
           style={{
-            width: 504,
+            width: 731,
             height: 10,
             background: '#252525',
             borderRadius: '0 0 10px 10px',
-            marginLeft: -26,
+            marginLeft: -38,
           }}
         />
       </motion.div>

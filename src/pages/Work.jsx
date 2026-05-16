@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import Marquee from '../components/Marquee'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -17,7 +16,7 @@ const showcases = [
     tier: 'Signature',
     img: '/ember.png',
     url: 'https://restaurant-demo-site-sable.vercel.app',
-    desc: 'A modern British restaurant required a cinematic online presence. We delivered a fire video hero, multi-page experience, and immersive animations that match the drama of their kitchen.',
+    desc: 'A concept site built to show what we can do for restaurant and hospitality brands — cinematic video hero, multi-page layout, and immersive animations that put the atmosphere front and centre.',
     tags: ['Restaurant', 'Cinematic', 'Multi-page', 'Animations'],
     accent: '#d4a060',
   },
@@ -26,7 +25,7 @@ const showcases = [
     tier: 'Studio',
     img: '/blade.png',
     url: 'https://blade-co-demo.vercel.app',
-    desc: 'A modern barbershop needed a sharp digital presence that drove footfall and online bookings. We built a sleek, mobile-first website with their bold brand at its core.',
+    desc: 'A demo site demonstrating our approach for barbershop brands — sharp, mobile-first design built around a bold identity, with booking integration and a layout that drives footfall.',
     tags: ['Barbershop', 'Booking', 'Brand', 'Mobile-first'],
     accent: '#7c6fe0',
   },
@@ -35,7 +34,7 @@ const showcases = [
     tier: 'Essential',
     img: '/cornerstone.png',
     url: 'https://cornerstone-builders-demo.vercel.app',
-    desc: 'A local building contractor needed a trustworthy, lead-generating website on a tight budget. We delivered a clean, professional 5-page site that positions them as the go-to choice in their area.',
+    desc: 'A demo site built to showcase what we can do for local builders — clean, professional, and designed to generate leads, with clear trust signals and a strong local presence.',
     tags: ['Trade', 'Lead Gen', 'Local SEO', 'Essential'],
     accent: '#4CAF50',
   },
@@ -98,8 +97,6 @@ export default function Work() {
         </motion.p>
       </div>
 
-      <Marquee />
-
       {/* Main showcases — alternating layout */}
       <div className="max-w-7xl mx-auto px-6 py-20 space-y-28">
         {showcases.map((item, i) => (
@@ -148,12 +145,6 @@ export default function Work() {
 
             {/* Copy */}
             <div>
-              <span
-                className="text-xs font-bold tracking-widest uppercase px-3 py-1 rounded-full inline-block mb-5"
-                style={{ background: `${item.accent}20`, color: item.accent }}
-              >
-                {item.tier}
-              </span>
               <h2 className="text-4xl font-black text-cream mb-4">{item.name}</h2>
               <p className="text-cream/60 leading-relaxed mb-6">{item.desc}</p>
               <div className="flex flex-wrap gap-2 mb-8">

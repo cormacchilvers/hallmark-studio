@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 
+const isTouch = window.matchMedia('(pointer: coarse)').matches
+
 export default function CustomCursor() {
   const [pos, setPos] = useState({ x: -100, y: -100 })
   const [trail, setTrail] = useState({ x: -100, y: -100 })
@@ -9,6 +11,7 @@ export default function CustomCursor() {
   const targetRef = useRef({ x: -100, y: -100 })
 
   useEffect(() => {
+    if (isTouch) return
     const move = (e) => {
       targetRef.current = { x: e.clientX, y: e.clientY }
       setPos({ x: e.clientX, y: e.clientY })
@@ -49,6 +52,8 @@ export default function CustomCursor() {
       cancelAnimationFrame(rafRef.current)
     }
   }, [])
+
+  if (isTouch) return null
 
   return (
     <>
