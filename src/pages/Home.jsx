@@ -184,25 +184,21 @@ export default function Home() {
           }}
         />
 
-        {/* Top label — absolutely positioned, outside flex flow */}
-        <div className="absolute left-0 right-0" style={{ top: 88, zIndex: 10 }}>
-          <div className="max-w-7xl mx-auto px-6 md:px-12">
-            <motion.p
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.15 }}
-              className="text-gold text-xs font-bold tracking-[0.35em] uppercase"
-            >
-              WEB DESIGN · CHELMSFORD ESSEX
-            </motion.p>
-          </div>
-        </div>
-
         {/* Main content — vertically centred by flex */}
         <div
           className="relative max-w-7xl mx-auto px-6 md:px-12 w-full"
           style={{ zIndex: 10 }}
         >
+          {/* Label — eyebrow above the heading */}
+          <motion.p
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="text-gold text-xs font-bold tracking-[0.35em] uppercase mb-6"
+          >
+            WEB DESIGN · CHELMSFORD ESSEX
+          </motion.p>
+
           {/* Oversized heading */}
           <motion.h1
             initial={{ opacity: 0, y: 50 }}
@@ -259,7 +255,7 @@ export default function Home() {
       </section>
 
       {/* ── PORTFOLIO ────────────────────────── */}
-      <section className="py-24">
+      <section className="py-14">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             variants={fadeUp}
@@ -278,7 +274,7 @@ export default function Home() {
             whileInView="visible"
             viewport={{ once: true }}
             custom={1}
-            className="font-serif-italic text-gold text-xl mb-14"
+            className="font-serif-italic text-gold text-xl mb-8"
           >
             From concept to live — see what we build.
           </motion.p>
@@ -353,7 +349,7 @@ export default function Home() {
       </section>
 
       {/* ── ABOUT STRIP ───────────────────────── */}
-      <section className="py-14">
+      <section className="py-10">
         <div className="max-w-7xl mx-auto px-6">
           <div ref={aboutRef} className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center" style={{ opacity: 0 }}>
             <div>
@@ -393,7 +389,7 @@ export default function Home() {
       </section>
 
       {/* ── CTA ───────────────────────────────── */}
-      <section className="py-32 relative overflow-hidden">
+      <section className="py-20 relative overflow-hidden">
         <div
           style={{
             position: 'absolute',
