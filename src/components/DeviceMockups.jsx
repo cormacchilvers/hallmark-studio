@@ -47,7 +47,7 @@ export default function DeviceMockups() {
         style={{
           position: 'relative',
           zIndex: 2,
-          transform: 'rotate(-3deg)',
+          rotate: -3,
         }}
       >
         {/* Screen lid */}
