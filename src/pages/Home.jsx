@@ -136,8 +136,8 @@ export default function Home() {
     <div className="bg-dark min-h-screen">
       {/* ── HERO ─────────────────────────────── */}
       <section
-        className="relative overflow-hidden flex flex-col"
-        style={{ height: '100vh', minHeight: 640 }}
+        className="relative overflow-hidden flex items-center"
+        style={{ height: '100vh', minHeight: 640, paddingTop: '8vh' }}
       >
         <FilmGrain />
 
@@ -184,27 +184,23 @@ export default function Home() {
           }}
         />
 
-        {/* Top label */}
-        <div
-          className="relative max-w-7xl mx-auto px-6 md:px-12 w-full"
-          style={{ paddingTop: 88, zIndex: 10 }}
-        >
-          <motion.p
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.15 }}
-            className="text-gold text-xs font-bold tracking-[0.35em] uppercase"
-          >
-            WEB DESIGN · CHELMSFORD ESSEX
-          </motion.p>
+        {/* Top label — absolutely positioned, outside flex flow */}
+        <div className="absolute left-0 right-0" style={{ top: 88, zIndex: 10 }}>
+          <div className="max-w-7xl mx-auto px-6 md:px-12">
+            <motion.p
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+              className="text-gold text-xs font-bold tracking-[0.35em] uppercase"
+            >
+              WEB DESIGN · CHELMSFORD ESSEX
+            </motion.p>
+          </div>
         </div>
 
-        {/* Flex spacer — pushes content to bottom */}
-        <div className="flex-1" />
-
-        {/* Bottom content block */}
+        {/* Main content — vertically centred by flex */}
         <div
-          className="relative max-w-7xl mx-auto px-6 md:px-12 w-full pb-14"
+          className="relative max-w-7xl mx-auto px-6 md:px-12 w-full"
           style={{ zIndex: 10 }}
         >
           {/* Oversized heading */}
