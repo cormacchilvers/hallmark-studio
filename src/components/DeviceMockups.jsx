@@ -136,7 +136,6 @@ export default function DeviceMockups() {
             background: 'radial-gradient(ellipse at center, rgba(201,168,76,0.16) 0%, rgba(0,0,0,0.45) 45%, transparent 70%)',
             filter: 'blur(10px)',
             pointerEvents: 'none',
-            zIndex: -1,
           }}
         />
       </motion.div>

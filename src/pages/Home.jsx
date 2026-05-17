@@ -163,63 +163,58 @@ export default function Home() {
   const aboutRef = useRef(null)
 
   useEffect(() => {
-    const el = headlineRef.current
-    if (!el) return
-    const words = el.querySelectorAll('.word')
-    gsap.fromTo(
-      words,
-      { opacity: 0, filter: 'blur(12px)', y: 20 },
-      {
-        opacity: 1,
-        filter: 'blur(0px)',
-        y: 0,
-        stagger: 0.08,
-        duration: 0.7,
-        ease: 'power3.out',
-        delay: 0.2,
-      }
-    )
-  }, [])
+    // Kill any stale ScrollTriggers left over from HMR or previous mounts
+    ScrollTrigger.getAll().forEach(t => t.kill())
 
-  useEffect(() => {
-    const cards = cardsRef.current?.querySelectorAll('.work-card')
-    if (!cards) return
-    gsap.fromTo(
-      cards,
-      { opacity: 0, y: 40 },
-      {
-        opacity: 1,
-        y: 0,
-        stagger: 0.12,
-        duration: 0.7,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: cardsRef.current,
-          start: 'top 80%',
-          once: true,
-        },
-      }
-    )
-  }, [])
+    // Headline — always in viewport, fire on next frame
+    const rAF = requestAnimationFrame(() => {
+      const el = headlineRef.current
+      if (!el) return
+      const words = el.querySelectorAll('.word')
+      gsap.fromTo(
+        words,
+        { opacity: 0, filter: 'blur(12px)', y: 20 },
+        { opacity: 1, filter: 'blur(0px)', y: 0, stagger: 0.08, duration: 0.7, ease: 'power3.out', delay: 0.2 }
+      )
+    })
 
-  useEffect(() => {
-    const el = aboutRef.current
-    if (!el) return
-    gsap.fromTo(
-      el,
-      { opacity: 0, y: 36 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.7,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 80%',
-          once: true,
-        },
+    // ScrollTrigger animations — wait for framer-motion page transition to settle
+    const triggers = []
+    const timeout = setTimeout(() => {
+      const cards = cardsRef.current?.querySelectorAll('.work-card')
+      if (cards?.length) {
+        gsap.set(cards, { opacity: 0, y: 40 })
+        triggers.push(
+          ScrollTrigger.create({
+            trigger: cardsRef.current,
+            start: 'top 80%',
+            once: true,
+            onEnter: () => gsap.to(cards, { opacity: 1, y: 0, stagger: 0.12, duration: 0.7, ease: 'power3.out' }),
+          })
+        )
       }
-    )
+
+      const aboutEl = aboutRef.current
+      if (aboutEl) {
+        gsap.set(aboutEl, { opacity: 0, y: 36 })
+        triggers.push(
+          ScrollTrigger.create({
+            trigger: aboutEl,
+            start: 'top 80%',
+            once: true,
+            onEnter: () => gsap.to(aboutEl, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }),
+          })
+        )
+      }
+
+      ScrollTrigger.refresh()
+    }, 350)
+
+    return () => {
+      cancelAnimationFrame(rAF)
+      clearTimeout(timeout)
+      triggers.forEach(t => t.kill())
+    }
   }, [])
 
   const line1Words = ['Your', 'competitors', 'have', 'a', 'website.']
