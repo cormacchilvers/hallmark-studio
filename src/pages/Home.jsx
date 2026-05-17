@@ -136,12 +136,12 @@ export default function Home() {
     <div className="bg-dark min-h-screen">
       {/* ── HERO ─────────────────────────────── */}
       <section
-        className="relative overflow-hidden flex items-center"
-        style={{ height: '100vh', minHeight: 640, paddingTop: '8vh' }}
+        className="relative overflow-hidden"
+        style={{ height: '100dvh' }}
       >
         <FilmGrain />
 
-        {/* Ambient glow — primary, slow drift */}
+        {/* Ambient glow — primary */}
         <motion.div
           animate={{ x: [0, 70, 0], y: [0, -35, 0] }}
           transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
@@ -157,7 +157,7 @@ export default function Home() {
           }}
         />
 
-        {/* Ambient glow — secondary, counter-drift */}
+        {/* Ambient glow — secondary */}
         <motion.div
           animate={{ x: [0, -45, 0], y: [0, 40, 0] }}
           transition={{ duration: 30, repeat: Infinity, ease: 'easeInOut', delay: 9 }}
@@ -178,79 +178,167 @@ export default function Home() {
           style={{
             position: 'absolute',
             inset: 0,
-            background: 'radial-gradient(ellipse 90% 90% at 50% 50%, transparent 25%, rgba(0,0,0,0.7) 100%)',
+            background: 'radial-gradient(ellipse 90% 90% at 50% 50%, transparent 25%, rgba(0,0,0,0.65) 100%)',
             pointerEvents: 'none',
             zIndex: 1,
           }}
         />
 
-        {/* Main content — vertically centred by flex */}
+        {/* ─── MOBILE layout (<md) ─── */}
         <div
-          className="relative max-w-7xl mx-auto px-6 md:px-12 w-full"
-          style={{ zIndex: 10 }}
+          className="md:hidden flex flex-col relative"
+          style={{ height: '100%', padding: '80px 28px 40px', zIndex: 10, justifyContent: 'center' }}
         >
-          {/* Label — eyebrow above the heading */}
           <motion.p
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.15 }}
-            className="text-gold text-xs font-bold tracking-[0.35em] uppercase mb-6"
+            style={{ color: '#C9A84C', fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: 20 }}
           >
-            WEB DESIGN · CHELMSFORD ESSEX
+            Web Design · Chelmsford Essex
           </motion.p>
 
-          {/* Oversized heading */}
           <motion.h1
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.95, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="font-black text-cream mb-8"
-            style={{ fontSize: 'clamp(2.8rem, 6vw, 8rem)', lineHeight: 0.95 }}
+            transition={{ duration: 0.9, delay: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="font-black text-cream"
+            style={{ fontSize: 'clamp(2.2rem, 8vw, 3.2rem)', lineHeight: 1.06, letterSpacing: '-0.02em', marginBottom: 24 }}
           >
-            Your competitors have a website.<br />
-            You'll have a<br />
-            <span className="font-serif-italic text-gold" style={{ fontSize: '1.05em' }}>
-              weapon.
-            </span>
+            Your competitors<br />have a website.<br />
+            You'll have a{' '}
+            <span className="font-serif-italic text-gold">weapon.</span>
           </motion.h1>
 
-          {/* Subtext + counter row */}
-          <div className="flex items-end justify-between gap-8">
-            <div>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.65, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="text-cream/60 text-lg leading-relaxed mb-6 max-w-md"
-              >
-                Premium custom websites for ambitious local businesses.
-                Built to convert. Designed to impress.
-              </motion.p>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            style={{ color: 'rgba(232,232,228,0.5)', fontSize: 14, lineHeight: 1.7, marginBottom: 32, maxWidth: 340 }}
+          >
+            Premium custom websites for ambitious local businesses.
+            Built to convert. Designed to impress.
+          </motion.p>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.85, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="flex flex-wrap gap-4"
-              >
-                <Link to="/work" className="btn-gold">See Our Work</Link>
-                <Link to="/contact" className="btn-outline">Get a Quote</Link>
-              </motion.div>
-            </div>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.8 }}
+            style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}
+          >
+            <Link to="/work" className="btn-gold">See Our Work</Link>
+            <Link to="/contact" className="btn-outline">Get a Quote</Link>
+          </motion.div>
+        </div>
 
-            {/* Project counter — desktop only */}
-            <motion.div
+        {/* ─── DESKTOP layout (md+) ─── */}
+        <div
+          className="hidden md:flex flex-col"
+          style={{ position: 'absolute', inset: 0, zIndex: 10 }}
+        >
+          {/* Main content — flex:1 expands to fill height, then centres within itself */}
+          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 48px' }}>
+
+            {/* Eyebrow — directly above heading */}
+            <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.7, delay: 1.3 }}
-              className="hidden md:flex items-center gap-3 flex-shrink-0"
+              transition={{ duration: 0.4, delay: 0.1 }}
+              style={{
+                color: '#C9A84C',
+                fontSize: 11,
+                fontWeight: 700,
+                letterSpacing: '0.3em',
+                textTransform: 'uppercase',
+                marginBottom: 20,
+              }}
             >
-              <div style={{ width: 36, height: 1, background: 'rgba(232,232,228,0.2)' }} />
-              <span style={{ color: 'rgba(232,232,228,0.3)', fontSize: 11, fontWeight: 700, letterSpacing: '0.2em' }}>
-                01 / 03
-              </span>
+              Web Design · Chelmsford Essex
+            </motion.p>
+
+            {/* Heading — each line staggered */}
+            <h1
+              className="font-black text-cream"
+              style={{
+                fontSize: 'clamp(2.5rem, 5.5vw, 8.5rem)',
+                lineHeight: 0.97,
+                letterSpacing: '-0.02em',
+                marginBottom: '1.75rem',
+              }}
+            >
+              <motion.span
+                style={{ display: 'block' }}
+                initial={{ opacity: 0, y: 28 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.55, delay: 0.22, ease: [0.25, 0.46, 0.45, 0.94] }}
+              >
+                Your competitors have a website.
+              </motion.span>
+              <motion.span
+                style={{ display: 'block' }}
+                initial={{ opacity: 0, y: 28 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.55, delay: 0.42, ease: [0.25, 0.46, 0.45, 0.94] }}
+              >
+                You'll have a{' '}
+                <span className="font-serif-italic text-gold">weapon.</span>
+              </motion.span>
+            </h1>
+
+            {/* Subtext */}
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.62, ease: [0.25, 0.46, 0.45, 0.94] }}
+              style={{
+                color: 'rgba(232,232,228,0.5)',
+                fontSize: 15,
+                lineHeight: 1.75,
+                maxWidth: 400,
+                marginBottom: '1.75rem',
+              }}
+            >
+              Premium custom websites for ambitious local businesses.
+              Built to convert. Designed to impress.
+            </motion.p>
+
+            {/* Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.78, ease: [0.25, 0.46, 0.45, 0.94] }}
+              style={{ display: 'flex', gap: 14 }}
+            >
+              <Link to="/work" className="btn-gold">See Our Work</Link>
+              <Link to="/contact" className="btn-outline">Get a Quote</Link>
             </motion.div>
+
           </div>
+
+          {/* Bottom strip — ©2026 left · location right */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 1.0 }}
+            style={{
+              position: 'absolute',
+              bottom: 0,
+              left: 0,
+              right: 0,
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              padding: '18px 48px',
+              borderTop: '1px solid rgba(232,232,228,0.07)',
+            }}
+          >
+            <span style={{ color: 'rgba(232,232,228,0.2)', fontSize: 11, fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase' }}>
+              ©2026 · Hallmark Studio
+            </span>
+            <span style={{ color: 'rgba(232,232,228,0.2)', fontSize: 11, fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase' }}>
+              Chelmsford, Essex
+            </span>
+          </motion.div>
         </div>
       </section>
 
