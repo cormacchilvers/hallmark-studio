@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import DeviceMockups from '../components/DeviceMockups'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -45,70 +44,6 @@ const portfolio = [
     accent: '#d4a060',
   },
 ]
-
-
-function GoldParticles() {
-  const canvasRef = useRef(null)
-
-  useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-    const ctx = canvas.getContext('2d')
-    let animId
-
-    const resize = () => {
-      canvas.width = canvas.offsetWidth
-      canvas.height = canvas.offsetHeight
-    }
-    resize()
-    window.addEventListener('resize', resize)
-
-    const particles = Array.from({ length: 40 }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      r: Math.random() * 1.8 + 0.4,
-      vx: (Math.random() - 0.5) * 0.2,
-      vy: -(Math.random() * 0.4 + 0.1),
-      alpha: Math.random() * 0.5 + 0.1,
-    }))
-
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-      particles.forEach((p) => {
-        p.x += p.vx
-        p.y += p.vy
-        if (p.x < 0) p.x = canvas.width
-        if (p.x > canvas.width) p.x = 0
-        if (p.y < 0) p.y = canvas.height
-        if (p.y > canvas.height) p.y = 0
-        ctx.beginPath()
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(201,168,76,${p.alpha})`
-        ctx.fill()
-      })
-      animId = requestAnimationFrame(animate)
-    }
-    animate()
-
-    return () => {
-      cancelAnimationFrame(animId)
-      window.removeEventListener('resize', resize)
-    }
-  }, [])
-
-  return (
-    <canvas
-      ref={canvasRef}
-      style={{
-        position: 'absolute',
-        inset: 0,
-        width: '100%',
-        height: '100%',
-        pointerEvents: 'none',
-      }}
-    />
-  )
-}
 
 function FilmGrain() {
   const canvasRef = useRef(null)
@@ -156,29 +91,13 @@ function FilmGrain() {
   )
 }
 
-
 export default function Home() {
-  const headlineRef = useRef(null)
   const cardsRef = useRef(null)
   const aboutRef = useRef(null)
 
   useEffect(() => {
-    // Kill any stale ScrollTriggers left over from HMR or previous mounts
     ScrollTrigger.getAll().forEach(t => t.kill())
 
-    // Headline — always in viewport, fire on next frame
-    const rAF = requestAnimationFrame(() => {
-      const el = headlineRef.current
-      if (!el) return
-      const words = el.querySelectorAll('.word')
-      gsap.fromTo(
-        words,
-        { opacity: 0, filter: 'blur(12px)', y: 20 },
-        { opacity: 1, filter: 'blur(0px)', y: 0, stagger: 0.08, duration: 0.7, ease: 'power3.out', delay: 0.2 }
-      )
-    })
-
-    // ScrollTrigger animations — wait for framer-motion page transition to settle
     const triggers = []
     const timeout = setTimeout(() => {
       const cards = cardsRef.current?.querySelectorAll('.work-card')
@@ -210,139 +129,137 @@ export default function Home() {
       ScrollTrigger.refresh()
     }, 350)
 
-    return () => {
-      cancelAnimationFrame(rAF)
-      clearTimeout(timeout)
-      triggers.forEach(t => t.kill())
-    }
+    return () => { clearTimeout(timeout); triggers.forEach(t => t.kill()) }
   }, [])
-
-  const line1Words = ['Your', 'competitors', 'have', 'a', 'website.']
-  const line2Words = ["You'll", 'have', 'a']
 
   return (
     <div className="bg-dark min-h-screen">
       {/* ── HERO ─────────────────────────────── */}
       <section
-        className="relative min-h-screen flex items-center overflow-hidden"
-        style={{ paddingTop: 80 }}
+        className="relative overflow-hidden flex flex-col"
+        style={{ height: '100vh', minHeight: 640 }}
       >
-        <GoldParticles />
-
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background:
-              'radial-gradient(ellipse 60% 50% at 70% 50%, rgba(201,168,76,0.06) 0%, transparent 70%)',
-            pointerEvents: 'none',
-          }}
-        />
-
-        {/* Light sweep */}
-        <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none', zIndex: 1 }}>
-          <div
-            style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '30%',
-              height: '100%',
-              background: 'linear-gradient(90deg, transparent 0%, rgba(201,168,76,0.04) 30%, rgba(201,168,76,0.08) 50%, rgba(201,168,76,0.04) 70%, transparent 100%)',
-              animation: 'lightSweep 8s linear infinite',
-            }}
-          />
-        </div>
-
-        {/* Vignette */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background: 'radial-gradient(ellipse 75% 75% at 50% 50%, transparent 35%, rgba(0,0,0,0.65) 100%)',
-            pointerEvents: 'none',
-            zIndex: 3,
-          }}
-        />
-
-        {/* Letterbox bars */}
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 70, background: '#000', pointerEvents: 'none', zIndex: 20 }} />
-        <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 70, background: '#111111', pointerEvents: 'none', zIndex: 20 }} />
-
-        {/* Film grain */}
         <FilmGrain />
 
-        <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pt-2 pb-2 relative z-10">
-          {/* Left copy */}
-          <div>
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-gold text-xs font-bold tracking-[0.35em] uppercase mb-6"
-            >
-              WEB DESIGN · CHELMSFORD ESSEX
-            </motion.p>
+        {/* Ambient glow — primary, slow drift */}
+        <motion.div
+          animate={{ x: [0, 70, 0], y: [0, -35, 0] }}
+          transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
+          style={{
+            position: 'absolute',
+            top: '-15%',
+            left: '-8%',
+            width: 900,
+            height: 750,
+            background: 'radial-gradient(ellipse at center, rgba(201,168,76,0.08) 0%, transparent 65%)',
+            pointerEvents: 'none',
+            zIndex: 0,
+          }}
+        />
 
-            <div ref={headlineRef} className="mb-6">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight text-cream">
-                {line1Words.map((w, i) => (
-                  <span key={i} className="word inline-block mr-3">{w}</span>
-                ))}
-              </h1>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-tight">
-                {line2Words.map((w, i) => (
-                  <span key={i} className="word inline-block mr-3 text-cream">{w}</span>
-                ))}{' '}
-                <span
-                  className="word inline-block font-serif-italic text-gold"
-                  style={{ fontSize: '1.05em' }}
-                >
-                  weapon.
-                </span>
-              </h1>
-            </div>
+        {/* Ambient glow — secondary, counter-drift */}
+        <motion.div
+          animate={{ x: [0, -45, 0], y: [0, 40, 0] }}
+          transition={{ duration: 30, repeat: Infinity, ease: 'easeInOut', delay: 9 }}
+          style={{
+            position: 'absolute',
+            bottom: '0%',
+            right: '-8%',
+            width: 750,
+            height: 550,
+            background: 'radial-gradient(ellipse at center, rgba(201,168,76,0.05) 0%, transparent 70%)',
+            pointerEvents: 'none',
+            zIndex: 0,
+          }}
+        />
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.9 }}
-              className="text-cream/60 text-lg leading-relaxed mb-6 max-w-md"
-            >
-              Premium custom websites for ambitious local businesses.
-              Built to convert. Designed to impress.
-            </motion.p>
+        {/* Edge vignette */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'radial-gradient(ellipse 90% 90% at 50% 50%, transparent 25%, rgba(0,0,0,0.7) 100%)',
+            pointerEvents: 'none',
+            zIndex: 1,
+          }}
+        />
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.1 }}
-              className="flex flex-wrap gap-4 mb-0"
-            >
-              <Link to="/work" className="btn-gold">See Our Work</Link>
-              <Link to="/contact" className="btn-outline">Get a Quote</Link>
-            </motion.div>
-          </div>
-
-          {/* Right: devices */}
-          <div className="hidden lg:flex justify-center items-center">
-            <DeviceMockups />
-          </div>
+        {/* Top label */}
+        <div
+          className="relative max-w-7xl mx-auto px-6 md:px-12 w-full"
+          style={{ paddingTop: 88, zIndex: 10 }}
+        >
+          <motion.p
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="text-gold text-xs font-bold tracking-[0.35em] uppercase"
+          >
+            WEB DESIGN · CHELMSFORD ESSEX
+          </motion.p>
         </div>
 
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2 }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        {/* Flex spacer — pushes content to bottom */}
+        <div className="flex-1" />
+
+        {/* Bottom content block */}
+        <div
+          className="relative max-w-7xl mx-auto px-6 md:px-12 w-full pb-14"
+          style={{ zIndex: 10 }}
         >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-px h-12 bg-gradient-to-b from-gold/60 to-transparent mx-auto"
-          />
-        </motion.div>
+          {/* Oversized heading */}
+          <motion.h1
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.95, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="font-black text-cream mb-8"
+            style={{ fontSize: 'clamp(2.8rem, 6vw, 8rem)', lineHeight: 0.95 }}
+          >
+            Your competitors have a website.<br />
+            You'll have a<br />
+            <span className="font-serif-italic text-gold" style={{ fontSize: '1.05em' }}>
+              weapon.
+            </span>
+          </motion.h1>
+
+          {/* Subtext + counter row */}
+          <div className="flex items-end justify-between gap-8">
+            <div>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.65, ease: [0.25, 0.46, 0.45, 0.94] }}
+                className="text-cream/60 text-lg leading-relaxed mb-6 max-w-md"
+              >
+                Premium custom websites for ambitious local businesses.
+                Built to convert. Designed to impress.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.85, ease: [0.25, 0.46, 0.45, 0.94] }}
+                className="flex flex-wrap gap-4"
+              >
+                <Link to="/work" className="btn-gold">See Our Work</Link>
+                <Link to="/contact" className="btn-outline">Get a Quote</Link>
+              </motion.div>
+            </div>
+
+            {/* Project counter — desktop only */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.7, delay: 1.3 }}
+              className="hidden md:flex items-center gap-3 flex-shrink-0"
+            >
+              <div style={{ width: 36, height: 1, background: 'rgba(232,232,228,0.2)' }} />
+              <span style={{ color: 'rgba(232,232,228,0.3)', fontSize: 11, fontWeight: 700, letterSpacing: '0.2em' }}>
+                01 / 03
+              </span>
+            </motion.div>
+          </div>
+        </div>
       </section>
 
       {/* ── PORTFOLIO ────────────────────────── */}
