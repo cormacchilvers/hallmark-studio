@@ -1,4 +1,4 @@
-import { useEffect, useRef, useMemo } from 'react'
+import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { gsap } from 'gsap'
@@ -8,26 +8,11 @@ import DeviceMockups from '../components/DeviceMockups'
 gsap.registerPlugin(ScrollTrigger)
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 36 },
   visible: (i = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, delay: i * 0.1, ease: [0.25, 0.46, 0.45, 0.94] },
-  }),
-}
-
-const cardVariants = {
-  hidden: { opacity: 0, rotateX: 15, rotateY: -10, y: 40 },
-  visible: (i) => ({
-    opacity: 1,
-    rotateX: 0,
-    rotateY: 0,
-    y: 0,
-    transition: {
-      duration: 0.7,
-      delay: i * 0.15,
-      ease: [0.25, 0.46, 0.45, 0.94],
-    },
+    transition: { duration: 0.65, delay: i * 0.1, ease: [0.25, 0.46, 0.45, 0.94] },
   }),
 }
 
@@ -174,6 +159,8 @@ function FilmGrain() {
 
 export default function Home() {
   const headlineRef = useRef(null)
+  const cardsRef = useRef(null)
+  const aboutRef = useRef(null)
 
   useEffect(() => {
     const el = headlineRef.current
@@ -190,6 +177,47 @@ export default function Home() {
         duration: 0.7,
         ease: 'power3.out',
         delay: 0.2,
+      }
+    )
+  }, [])
+
+  useEffect(() => {
+    const cards = cardsRef.current?.querySelectorAll('.work-card')
+    if (!cards) return
+    gsap.fromTo(
+      cards,
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        stagger: 0.12,
+        duration: 0.7,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: cardsRef.current,
+          start: 'top 80%',
+          once: true,
+        },
+      }
+    )
+  }, [])
+
+  useEffect(() => {
+    const el = aboutRef.current
+    if (!el) return
+    gsap.fromTo(
+      el,
+      { opacity: 0, y: 36 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.7,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 80%',
+          once: true,
+        },
       }
     )
   }, [])
@@ -249,14 +277,14 @@ export default function Home() {
         {/* Film grain */}
         <FilmGrain />
 
-        <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pt-10 pb-2 relative z-10">
+        <div className="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pt-2 pb-2 relative z-10">
           {/* Left copy */}
           <div>
             <motion.p
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-gold text-xs font-bold tracking-[0.25em] uppercase mb-6"
+              className="text-gold text-xs font-bold tracking-[0.35em] uppercase mb-6"
             >
               WEB DESIGN · CHELMSFORD ESSEX
             </motion.p>
@@ -347,29 +375,26 @@ export default function Home() {
             From concept to live — see what we build.
           </motion.p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {portfolio.map((item, i) => (
-              <motion.div
+              <div
                 key={item.name}
-                custom={i}
-                variants={cardVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: '-50px' }}
-                style={{ perspective: 800 }}
-                className="h-full"
+                className="work-card h-full"
+                style={{ opacity: 0 }}
               >
                 <div
                   className="card-dark rounded-2xl overflow-hidden group transition-all duration-300 hover:-translate-y-2 flex flex-col h-full"
                   style={{
-                    borderColor: `${item.accent}30`,
-                    boxShadow: `0 4px 30px rgba(0,0,0,0.3)`,
+                    borderColor: i === 0 ? `${item.accent}45` : `${item.accent}28`,
+                    boxShadow: i === 0
+                      ? `0 4px 40px rgba(0,0,0,0.4), 0 0 0 1px ${item.accent}20`
+                      : `0 4px 30px rgba(0,0,0,0.25)`,
                   }}
                 >
                   {/* Screenshot */}
                   <div
                     style={{
-                      height: 180,
+                      height: i === 0 ? 220 : 180,
                       position: 'relative',
                       overflow: 'hidden',
                     }}
@@ -386,7 +411,6 @@ export default function Home() {
                       }}
                       className="group-hover:scale-105"
                     />
-                    {/* Dark overlay on hover */}
                     <div
                       style={{
                         position: 'absolute',
@@ -406,61 +430,56 @@ export default function Home() {
                         href={item.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-cream/40 hover:text-gold text-sm font-medium transition-colors"
+                        className="text-cream/55 hover:text-gold text-sm font-semibold transition-colors duration-200 group/link flex items-center gap-1"
                       >
-                        View Live →
+                        <span className="border-b border-cream/20 group-hover/link:border-gold transition-colors duration-200">View Live</span>
+                        <span className="group-hover/link:translate-x-0.5 transition-transform duration-200">→</span>
                       </a>
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* ── ABOUT STRIP ───────────────────────── */}
-      <section className="py-24">
+      <section className="py-14">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
+          <div ref={aboutRef} className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center" style={{ opacity: 0 }}>
+            <div>
               <h2 className="text-5xl font-black text-cream mb-3">
                 We are Hallmark Studio.
               </h2>
-              <p className="font-serif-italic text-gold text-xl mb-6">
+              <p className="text-cream/60 text-xl mb-6">
                 A two-person agency based in Chelmsford, Essex.
               </p>
               <p className="text-cream/60 leading-relaxed text-lg">
                 We build fast, beautiful, custom websites for local businesses who want to
                 stand out. No templates. No shortcuts. Every site is built from scratch.
               </p>
-            </motion.div>
+            </div>
 
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              custom={1}
-            >
-              <div className="card-dark rounded-2xl p-8 space-y-5">
+            <div>
+              <div
+                className="card-dark rounded-2xl p-8 space-y-5"
+                style={{
+                  boxShadow: '0 0 50px rgba(201,168,76,0.07), 0 0 0 1px rgba(201,168,76,0.14)',
+                }}
+              >
                 {[
                   { label: 'Est.', value: '2026' },
                   { label: 'Location', value: 'Chelmsford, Essex' },
                   { label: 'Email', value: 'hello@hallmarkstudio.com' },
                 ].map(({ label, value }) => (
                   <div key={label} className="flex justify-between items-center border-b border-gold/10 pb-5 last:border-0 last:pb-0">
-                    <span className="text-cream/40 text-sm tracking-wide uppercase font-medium">{label}</span>
+                    <span className="text-cream/55 text-sm tracking-widest uppercase font-semibold">{label}</span>
                     <span className="text-cream font-semibold">{value}</span>
                   </div>
                 ))}
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>

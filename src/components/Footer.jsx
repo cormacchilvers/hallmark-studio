@@ -60,7 +60,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="border-t border-gold/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-cream/30 text-xs">
-            © 2025 Hallmark Studio. All rights reserved.
+            © 2026 Hallmark Studio. All rights reserved.
           </p>
           <p className="text-cream/20 text-xs">
             Premium Web Design · Chelmsford, Essex

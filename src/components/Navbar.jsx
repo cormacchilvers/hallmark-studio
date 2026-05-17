@@ -1,10 +1,29 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const close = () => setMenuOpen(false)
+  const location = useLocation()
+  const isActive = (path) => location.pathname === path
+
+  const linkStyle = (path) => ({
+    color: isActive(path) ? '#C9A84C' : '#E8E8E4',
+    fontSize: '14px',
+    textDecoration: 'none',
+    fontWeight: isActive(path) ? '500' : '400',
+    borderBottom: isActive(path) ? '1px solid rgba(201,168,76,0.6)' : '1px solid transparent',
+    paddingBottom: '2px',
+    transition: 'color 0.2s, border-color 0.2s',
+  })
+
+  const mobileLinkStyle = (path) => ({
+    color: isActive(path) ? '#C9A84C' : '#E8E8E4',
+    fontSize: '26px',
+    textDecoration: 'none',
+    fontWeight: '600',
+  })
 
   return (
     <>
@@ -54,9 +73,9 @@ export default function Navbar() {
             alignItems: 'center',
             gap: '40px',
           }}>
-            <Link to="/work"    style={{ color: '#E8E8E4', fontSize: '14px', textDecoration: 'none', fontWeight: '400' }}>Work</Link>
-            <Link to="/pricing" style={{ color: '#E8E8E4', fontSize: '14px', textDecoration: 'none', fontWeight: '400' }}>Pricing</Link>
-            <Link to="/contact" style={{ color: '#E8E8E4', fontSize: '14px', textDecoration: 'none', fontWeight: '400' }}>Contact</Link>
+            <Link to="/work"    style={linkStyle('/work')}>Work</Link>
+            <Link to="/pricing" style={linkStyle('/pricing')}>Pricing</Link>
+            <Link to="/contact" style={linkStyle('/contact')}>Contact</Link>
           </div>
 
           {/* Get a Quote button — desktop only */}
@@ -125,9 +144,9 @@ export default function Navbar() {
               gap: '40px',
             }}
           >
-            <Link to="/work"    onClick={close} style={{ color: '#E8E8E4', fontSize: '26px', textDecoration: 'none', fontWeight: '600' }}>Work</Link>
-            <Link to="/pricing" onClick={close} style={{ color: '#E8E8E4', fontSize: '26px', textDecoration: 'none', fontWeight: '600' }}>Pricing</Link>
-            <Link to="/contact" onClick={close} style={{ color: '#E8E8E4', fontSize: '26px', textDecoration: 'none', fontWeight: '600' }}>Contact</Link>
+            <Link to="/work"    onClick={close} style={mobileLinkStyle('/work')}>Work</Link>
+            <Link to="/pricing" onClick={close} style={mobileLinkStyle('/pricing')}>Pricing</Link>
+            <Link to="/contact" onClick={close} style={mobileLinkStyle('/contact')}>Contact</Link>
             <Link to="/contact" onClick={close} style={{
               marginTop: '8px',
               display: 'inline-flex',

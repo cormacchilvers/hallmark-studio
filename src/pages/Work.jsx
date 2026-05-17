@@ -91,7 +91,7 @@ export default function Work() {
           initial="hidden"
           animate="visible"
           custom={1}
-          className="font-serif-italic text-gold text-2xl"
+          className="text-cream/60 text-2xl"
         >
           Every project tells a story.
         </motion.p>
@@ -256,7 +256,7 @@ export default function Work() {
           <h2 className="text-4xl font-black text-cream mb-4">
             Want results like these?
           </h2>
-          <p className="font-serif-italic text-gold text-xl mb-8">
+          <p className="text-cream/60 text-xl mb-8">
             Let's talk about your project.
           </p>
           <Link to="/contact" className="btn-gold">

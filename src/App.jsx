@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import CustomCursor from './components/CustomCursor'
+import ScrollToTop from './components/ScrollToTop'
 import Home from './pages/Home'
 import Work from './pages/Work'
 import Pricing from './pages/Pricing'
@@ -56,6 +57,7 @@ const AnimatedRoutes = () => {
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <CustomCursor />
       <Navbar />
       <AnimatedRoutes />

@@ -14,23 +14,47 @@ const fadeUp = {
 const faqs = [
   {
     q: 'What does the process look like?',
-    a: "We start with a quick discovery call to understand your business. Then we produce a design concept, get your feedback, refine it, and build the site. You'll be involved at every stage without it taking up all your time.",
+    a: 'We scope your project, take a 50% deposit, build your site, gather your feedback across 2 revision rounds, then launch.',
   },
   {
     q: 'How long does it take?',
-    a: 'Essential sites are typically delivered within 48 hours of design sign-off. Studio and Signature projects take 5–14 days depending on scope and revision rounds.',
+    a: 'Starter builds take 5–7 working days. Standard takes 10–14 working days. Premium takes 2–3 weeks.',
   },
   {
     q: 'How many revisions do I get?',
-    a: 'Essential includes 2 revision rounds. Studio includes unlimited revisions. Signature has unlimited revisions with dedicated turnaround.',
+    a: '2 rounds of revisions are included. Additional changes are charged at £50/hour.',
   },
   {
     q: 'How does payment work?',
-    a: 'We take a 50% deposit to begin work, with the remaining 50% due on project completion. We accept bank transfer and card payments.',
+    a: '50% upfront to begin, 50% on completion.',
   },
   {
     q: 'What happens after the site launches?',
-    a: 'All sites come with a 7-day post-launch bug-fix guarantee. After that, you can self-manage or move onto one of our retainer packages to keep things running smoothly.',
+    a: 'You can optionally add a maintenance plan from £20/month. Without one, a handover fee of £150–£200 applies and you take full ownership of the site.',
+  },
+]
+
+const packages = [
+  {
+    label: 'Starter',
+    description: '1 page + enquiry form',
+    price: '£599',
+    turnaround: '5–7 working days',
+    type: 'one-off',
+  },
+  {
+    label: 'Standard',
+    description: 'Up to 5 pages + enquiry form',
+    price: '£999',
+    turnaround: '10–14 working days',
+    type: 'one-off',
+  },
+  {
+    label: 'Premium',
+    description: 'Up to 8 pages + booking system + SEO-friendly build',
+    price: '£1,499',
+    turnaround: '2–3 weeks',
+    type: 'one-off',
   },
 ]
 
@@ -87,7 +111,7 @@ export default function Pricing() {
           initial="hidden"
           animate="visible"
           custom={1}
-          className="font-serif-italic text-gold text-2xl"
+          className="text-cream/60 text-2xl"
         >
           No hidden fees. No surprises.
         </motion.p>
@@ -117,7 +141,7 @@ export default function Pricing() {
       </div>
 
       {/* What's included */}
-      <div className="max-w-4xl mx-auto px-6 mb-10">
+      <div className="max-w-4xl mx-auto px-6 mb-16">
         <motion.h2
           variants={fadeUp}
           initial="hidden"
@@ -130,12 +154,13 @@ export default function Pricing() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {[
             'Fully custom design — no templates ever.',
-            'Mobile responsive.',
             'GSAP animations.',
-            'Fast load times.',
-            'SEO foundation.',
-            'Vercel hosting and deployment.',
+            'SEO-friendly build.',
             'Built from scratch for your business.',
+            'Mobile responsive.',
+            'Fast load times.',
+            'Vercel hosting and deployment.',
+            '2 rounds of revisions included.',
           ].map((item, i) => (
             <motion.div
               key={item}
@@ -153,64 +178,80 @@ export default function Pricing() {
         </div>
       </div>
 
-      {/* Retainer — paired immediately below the build cost */}
+      {/* Pricing packages */}
+      <div className="max-w-4xl mx-auto px-6 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          {packages.map((pkg, i) => (
+            <motion.div
+              key={pkg.label}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              custom={i * 0.5}
+              className="card-dark rounded-2xl p-7 flex flex-col"
+              style={{ borderColor: 'rgba(201,168,76,0.15)' }}
+            >
+              <p
+                style={{
+                  fontSize: 10,
+                  fontWeight: 800,
+                  letterSpacing: '0.2em',
+                  textTransform: 'uppercase',
+                  color: '#C9A84C',
+                  opacity: 0.6,
+                  marginBottom: 10,
+                }}
+              >
+                {pkg.label}
+              </p>
+              <p className="text-3xl font-black text-gold mb-1">
+                {pkg.price}
+              </p>
+              <p
+                style={{
+                  fontSize: 10,
+                  fontWeight: 700,
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase',
+                  color: '#C9A84C',
+                  opacity: 0.45,
+                  marginBottom: 14,
+                }}
+              >
+                one-off
+              </p>
+              <p className="text-cream/70 text-sm leading-relaxed mb-4 flex-1">
+                {pkg.description}
+              </p>
+              <div
+                style={{
+                  borderTop: '1px solid rgba(201,168,76,0.1)',
+                  paddingTop: 14,
+                  marginTop: 'auto',
+                }}
+              >
+                <p className="text-cream/40 text-xs mb-1">
+                  {pkg.turnaround} turnaround
+                </p>
+                <p className="text-cream/30 text-xs">
+                  50% deposit required to begin
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* Optional Retainer */}
       <div className="max-w-4xl mx-auto px-6 mb-16">
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="card-dark rounded-2xl p-7 flex flex-col sm:flex-row sm:items-center gap-6"
+          className="card-dark rounded-2xl p-7"
           style={{ borderColor: 'rgba(201,168,76,0.15)' }}
-        >
-          <div className="flex-1">
-            <p
-              style={{
-                fontSize: 10,
-                fontWeight: 800,
-                letterSpacing: '0.2em',
-                textTransform: 'uppercase',
-                color: '#C9A84C',
-                opacity: 0.6,
-                marginBottom: 10,
-              }}
-            >
-              Optional monthly retainer
-            </p>
-            <p className="text-3xl font-black text-gold mb-2">
-              From £99
-              <span className="text-base font-semibold text-cream/40">/month</span>
-            </p>
-            <p className="text-cream/55 text-sm leading-relaxed">
-              Keep your site fast, secure, and up to date once it's live. Highly recommended for
-              businesses that want to stay sharp online without the hassle.
-            </p>
-          </div>
-          <div
-            className="flex-shrink-0 hidden sm:block"
-            style={{ width: 1, alignSelf: 'stretch', background: 'rgba(201,168,76,0.12)' }}
-          />
-          <div className="flex-shrink-0 sm:text-right">
-            <p className="text-cream/30 text-xs leading-relaxed max-w-[160px] sm:ml-auto">
-              Hosting, updates, security monitoring, and ongoing support.
-            </p>
-          </div>
-        </motion.div>
-      </div>
-
-      {/* Launch offer banner */}
-      <div className="max-w-3xl mx-auto px-6 mb-14">
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          style={{
-            border: '1px solid rgba(201,168,76,0.35)',
-            background: 'rgba(201,168,76,0.04)',
-            borderRadius: 16,
-            padding: '28px 32px',
-          }}
         >
           <p
             style={{
@@ -219,20 +260,40 @@ export default function Pricing() {
               letterSpacing: '0.2em',
               textTransform: 'uppercase',
               color: '#C9A84C',
-              marginBottom: 10,
+              opacity: 0.6,
+              marginBottom: 16,
             }}
           >
-            LAUNCH OFFER
+            Optional monthly retainer
           </p>
-          <h3 className="text-cream text-2xl font-black mb-3">
-            Launching in Chelmsford.
-          </h3>
-          <p className="text-cream/55 text-sm leading-relaxed mb-3">
-            We're offering discounted rates to our first clients in Chelmsford and Essex. If
-            you're ready to get started, now is the best time to reach out.
-          </p>
-          <p className="font-serif-italic text-gold/70 text-sm">
-            Reach out before our launch period closes.
+          <div className="flex flex-col sm:flex-row gap-6">
+            {/* Option A */}
+            <div className="flex-1">
+              <p className="text-2xl font-black text-gold mb-0.5">
+                £20
+                <span className="text-sm font-semibold text-cream/40">/month</span>
+              </p>
+              <p className="text-cream/70 text-sm mt-1">Hosting only</p>
+            </div>
+
+            <div
+              className="hidden sm:block flex-shrink-0"
+              style={{ width: 1, alignSelf: 'stretch', background: 'rgba(201,168,76,0.12)' }}
+            />
+
+            {/* Option B */}
+            <div className="flex-1">
+              <p className="text-2xl font-black text-gold mb-0.5">
+                £35
+                <span className="text-sm font-semibold text-cream/40">/month</span>
+              </p>
+              <p className="text-cream/70 text-sm mt-1">Hosting + maintenance</p>
+              <p className="text-cream/40 text-xs mt-0.5">2 edits/month included</p>
+            </div>
+          </div>
+
+          <p className="text-cream/30 text-xs leading-relaxed mt-5 pt-5" style={{ borderTop: '1px solid rgba(201,168,76,0.08)' }}>
+            Available to clients who purchase a full build. Domain registration is the client's responsibility.
           </p>
         </motion.div>
       </div>
@@ -281,7 +342,7 @@ export default function Pricing() {
           <h2 className="text-4xl font-black text-cream mb-4">
             Ready to invest in your business?
           </h2>
-          <p className="font-serif-italic text-gold text-xl mb-8">
+          <p className="text-cream/60 text-xl mb-8">
             The best time to start was yesterday. The second best is now.
           </p>
           <Link to="/contact" className="btn-gold">

@@ -1,14 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: (i = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, delay: i * 0.1, ease: [0.25, 0.46, 0.45, 0.94] },
-  }),
-}
+import { gsap } from 'gsap'
 
 const inputStyles = {
   width: '100%',
@@ -19,11 +11,21 @@ const inputStyles = {
   color: '#E8E8E4',
   fontSize: 14,
   outline: 'none',
-  transition: 'border-color 0.2s',
+  transition: 'border-color 0.2s, box-shadow 0.2s',
   fontFamily: 'Inter, sans-serif',
+  boxShadow: 'none',
 }
 
 function Field({ label, ...props }) {
+  const handleFocus = (e) => {
+    e.target.style.borderColor = '#C9A84C'
+    e.target.style.boxShadow = '0 0 0 3px rgba(201,168,76,0.1)'
+  }
+  const handleBlur = (e) => {
+    e.target.style.borderColor = 'rgba(201,168,76,0.2)'
+    e.target.style.boxShadow = 'none'
+  }
+
   return (
     <div>
       <label className="block text-cream/50 text-xs tracking-widest uppercase font-semibold mb-2">
@@ -33,18 +35,18 @@ function Field({ label, ...props }) {
         <textarea
           {...props}
           as={undefined}
-          rows={5}
+          rows={10}
           style={{ ...inputStyles, resize: 'vertical' }}
-          onFocus={(e) => (e.target.style.borderColor = '#C9A84C')}
-          onBlur={(e) => (e.target.style.borderColor = 'rgba(201,168,76,0.2)')}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
         />
       ) : props.as === 'select' ? (
         <select
           {...props}
           as={undefined}
           style={{ ...inputStyles, appearance: 'none', cursor: 'pointer' }}
-          onFocus={(e) => (e.target.style.borderColor = '#C9A84C')}
-          onBlur={(e) => (e.target.style.borderColor = 'rgba(201,168,76,0.2)')}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
         >
           {props.children}
         </select>
@@ -52,8 +54,8 @@ function Field({ label, ...props }) {
         <input
           {...props}
           style={inputStyles}
-          onFocus={(e) => (e.target.style.borderColor = '#C9A84C')}
-          onBlur={(e) => (e.target.style.borderColor = 'rgba(201,168,76,0.2)')}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
         />
       )}
     </div>
@@ -71,6 +73,39 @@ export default function Contact() {
   const [sent, setSent] = useState(false)
   const [sending, setSending] = useState(false)
   const [error, setError] = useState(false)
+
+  const headingRef = useRef(null)
+  const subheadingRef = useRef(null)
+  const formRef = useRef(null)
+  const infoRef = useRef(null)
+
+  useEffect(() => {
+    const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
+
+    tl.fromTo(
+      headingRef.current,
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 0.65 }
+    )
+    .fromTo(
+      subheadingRef.current,
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 0.65 },
+      '-=0.45'
+    )
+    .fromTo(
+      formRef.current,
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 0.7 },
+      '-=0.35'
+    )
+    .fromTo(
+      infoRef.current,
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 0.7 },
+      '-=0.5'
+    )
+  }, [])
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -105,38 +140,33 @@ export default function Contact() {
   }
 
   return (
-    <div className="bg-dark min-h-screen pt-24">
+    <div className="bg-dark pt-24">
       {/* Header */}
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <motion.h1
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
+      <div className="max-w-7xl mx-auto px-6 pt-12 pb-6">
+        <h1
+          ref={headingRef}
           className="text-6xl lg:text-7xl font-black text-cream mb-4"
+          style={{ opacity: 0 }}
         >
           Let's build something.
-        </motion.h1>
-        <motion.p
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          custom={1}
-          className="font-serif-italic text-gold text-2xl"
+        </h1>
+        <p
+          ref={subheadingRef}
+          className="text-cream/60 text-2xl"
+          style={{ opacity: 0 }}
         >
           Get in touch or book a free call.
-        </motion.p>
+        </p>
       </div>
 
       {/* Split layout */}
-      <div className="max-w-7xl mx-auto px-6 pb-24">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
+      <div className="max-w-7xl mx-auto px-6 pb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:items-stretch">
           {/* Form */}
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            custom={2}
+          <div
+            ref={formRef}
             className="lg:col-span-3"
+            style={{ opacity: 0 }}
           >
             {sent ? (
               <motion.div
@@ -222,17 +252,15 @@ export default function Contact() {
                 )}
               </form>
             )}
-          </motion.div>
+          </div>
 
           {/* Right card */}
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            custom={3}
-            className="lg:col-span-2"
+          <div
+            ref={infoRef}
+            className="lg:col-span-2 flex flex-col"
+            style={{ opacity: 0 }}
           >
-            <div className="card-dark rounded-2xl p-8 space-y-7 sticky top-28">
+            <div className="card-dark rounded-2xl p-8 flex flex-col h-full" style={{ justifyContent: 'space-between' }}>
               <div>
                 <p className="text-cream/30 text-xs tracking-widest uppercase font-bold mb-2">
                   Email
@@ -273,12 +301,12 @@ export default function Contact() {
                   className="rounded-xl p-4 text-center"
                   style={{ background: 'rgba(201,168,76,0.06)', border: '1px solid rgba(201,168,76,0.15)' }}
                 >
-                  <p className="text-gold font-bold mb-1">We respond within 24 hours.</p>
-                  <p className="text-cream/40 text-sm">Usually much faster.</p>
+                  <p className="text-cream font-bold mb-1">We respond within 24 hours.</p>
+                  <p className="text-cream/60 text-sm">Usually much faster.</p>
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>

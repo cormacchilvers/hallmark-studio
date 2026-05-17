@@ -59,7 +59,7 @@ export default function DeviceMockups() {
             borderRadius: '14px 14px 0 0',
             border: '2px solid #444',
             overflow: 'hidden',
-            boxShadow: '0 36px 100px rgba(0,0,0,0.7)',
+            boxShadow: '0 36px 100px rgba(0,0,0,0.75), 0 16px 50px rgba(201,168,76,0.07)',
             position: 'relative',
           }}
         >
@@ -122,6 +122,21 @@ export default function DeviceMockups() {
             background: '#252525',
             borderRadius: '0 0 10px 10px',
             marginLeft: -38,
+          }}
+        />
+        {/* Ground shadow + ambient gold glow */}
+        <div
+          style={{
+            position: 'absolute',
+            bottom: -22,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: 700,
+            height: 48,
+            background: 'radial-gradient(ellipse at center, rgba(201,168,76,0.16) 0%, rgba(0,0,0,0.45) 45%, transparent 70%)',
+            filter: 'blur(10px)',
+            pointerEvents: 'none',
+            zIndex: -1,
           }}
         />
       </motion.div>
