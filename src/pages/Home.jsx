@@ -137,7 +137,7 @@ export default function Home() {
       {/* ── HERO ─────────────────────────────── */}
       <section
         className="relative overflow-hidden"
-        style={{ height: '100dvh' }}
+        style={{ height: '100dvh', display: 'flex', alignItems: 'center' }}
       >
         <FilmGrain />
 
@@ -184,46 +184,85 @@ export default function Home() {
           }}
         />
 
-        {/* ─── MOBILE layout (<md) ─── */}
+        {/* ─── Content — single centred block ─── */}
         <div
-          className="md:hidden flex flex-col relative"
-          style={{ height: '100%', padding: '0 28px', zIndex: 10, justifyContent: 'center' }}
+          style={{
+            position: 'relative',
+            zIndex: 10,
+            width: '100%',
+            padding: '0 clamp(28px, 4vw, 48px)',
+            display: 'flex',
+            flexDirection: 'column',
+          }}
         >
+          {/* Eyebrow */}
           <motion.p
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.15 }}
-            style={{ color: '#C9A84C', fontSize: 10, fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: 20 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+            style={{
+              color: '#C9A84C',
+              fontSize: 11,
+              fontWeight: 700,
+              letterSpacing: '0.3em',
+              textTransform: 'uppercase',
+              marginBottom: 20,
+            }}
           >
             Web Design · Chelmsford Essex
           </motion.p>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.25, ease: [0.25, 0.46, 0.45, 0.94] }}
+          {/* Heading */}
+          <h1
             className="font-black text-cream"
-            style={{ fontSize: 'clamp(2.2rem, 8vw, 3.2rem)', lineHeight: 1.06, letterSpacing: '-0.02em', marginBottom: 24 }}
+            style={{
+              fontSize: 'clamp(2.2rem, 5.5vw, 8.5rem)',
+              lineHeight: 0.97,
+              letterSpacing: '-0.02em',
+              marginBottom: '1.75rem',
+            }}
           >
-            Your competitors<br />have a website.<br />
-            You'll have a{' '}
-            <span className="font-serif-italic text-gold">weapon.</span>
-          </motion.h1>
+            <motion.span
+              style={{ display: 'block' }}
+              initial={{ opacity: 0, y: 28 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.22, ease: [0.25, 0.46, 0.45, 0.94] }}
+            >
+              Your competitors have a website.
+            </motion.span>
+            <motion.span
+              style={{ display: 'block' }}
+              initial={{ opacity: 0, y: 28 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.42, ease: [0.25, 0.46, 0.45, 0.94] }}
+            >
+              You'll have a{' '}
+              <span className="font-serif-italic text-gold">weapon.</span>
+            </motion.span>
+          </h1>
 
+          {/* Subtext */}
           <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            style={{ color: 'rgba(232,232,228,0.5)', fontSize: 14, lineHeight: 1.7, marginBottom: 32, maxWidth: 340 }}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.62, ease: [0.25, 0.46, 0.45, 0.94] }}
+            style={{
+              color: 'rgba(232,232,228,0.5)',
+              fontSize: 15,
+              lineHeight: 1.75,
+              maxWidth: 400,
+              marginBottom: '1.75rem',
+            }}
           >
             Premium custom websites for ambitious local businesses.
             Built to convert. Designed to impress.
           </motion.p>
 
+          {/* Buttons */}
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.8 }}
+            transition={{ duration: 0.5, delay: 0.78, ease: [0.25, 0.46, 0.45, 0.94] }}
             style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}
           >
             <Link to="/work" className="btn-gold">See Our Work</Link>
@@ -231,115 +270,29 @@ export default function Home() {
           </motion.div>
         </div>
 
-        {/* ─── DESKTOP layout (md+) ─── */}
-        <div
-          className="hidden md:flex flex-col"
-          style={{ position: 'absolute', inset: 0, zIndex: 10 }}
+        {/* Bottom strip — pinned to very bottom */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 1.0 }}
+          style={{
+            position: 'absolute',
+            bottom: 24,
+            left: 24,
+            right: 24,
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            zIndex: 10,
+          }}
         >
-          {/* Main content — flex:1 expands to fill height, then centres within itself */}
-          <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 48px' }}>
-
-            {/* Eyebrow — directly above heading */}
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.4, delay: 0.1 }}
-              style={{
-                color: '#C9A84C',
-                fontSize: 11,
-                fontWeight: 700,
-                letterSpacing: '0.3em',
-                textTransform: 'uppercase',
-                marginBottom: 20,
-              }}
-            >
-              Web Design · Chelmsford Essex
-            </motion.p>
-
-            {/* Heading — each line staggered */}
-            <h1
-              className="font-black text-cream"
-              style={{
-                fontSize: 'clamp(2.5rem, 5.5vw, 8.5rem)',
-                lineHeight: 0.97,
-                letterSpacing: '-0.02em',
-                marginBottom: '1.75rem',
-              }}
-            >
-              <motion.span
-                style={{ display: 'block' }}
-                initial={{ opacity: 0, y: 28 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.55, delay: 0.22, ease: [0.25, 0.46, 0.45, 0.94] }}
-              >
-                Your competitors have a website.
-              </motion.span>
-              <motion.span
-                style={{ display: 'block' }}
-                initial={{ opacity: 0, y: 28 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.55, delay: 0.42, ease: [0.25, 0.46, 0.45, 0.94] }}
-              >
-                You'll have a{' '}
-                <span className="font-serif-italic text-gold">weapon.</span>
-              </motion.span>
-            </h1>
-
-            {/* Subtext */}
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.62, ease: [0.25, 0.46, 0.45, 0.94] }}
-              style={{
-                color: 'rgba(232,232,228,0.5)',
-                fontSize: 15,
-                lineHeight: 1.75,
-                maxWidth: 400,
-                marginBottom: '1.75rem',
-              }}
-            >
-              Premium custom websites for ambitious local businesses.
-              Built to convert. Designed to impress.
-            </motion.p>
-
-            {/* Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.78, ease: [0.25, 0.46, 0.45, 0.94] }}
-              style={{ display: 'flex', gap: 14 }}
-            >
-              <Link to="/work" className="btn-gold">See Our Work</Link>
-              <Link to="/contact" className="btn-outline">Get a Quote</Link>
-            </motion.div>
-
-          </div>
-
-          {/* Bottom strip — ©2026 left · location right */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 1.0 }}
-            style={{
-              position: 'absolute',
-              bottom: 0,
-              left: 0,
-              right: 0,
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              padding: '18px 48px',
-              borderTop: '1px solid rgba(232,232,228,0.07)',
-            }}
-          >
-            <span style={{ color: 'rgba(232,232,228,0.2)', fontSize: 11, fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase' }}>
-              ©2026 · Hallmark Studio
-            </span>
-            <span style={{ color: 'rgba(232,232,228,0.2)', fontSize: 11, fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase' }}>
-              Chelmsford, Essex
-            </span>
-          </motion.div>
-        </div>
+          <span style={{ color: 'rgba(232,232,228,0.2)', fontSize: 11, fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase' }}>
+            ©2026 · Hallmark Studio
+          </span>
+          <span style={{ color: 'rgba(232,232,228,0.2)', fontSize: 11, fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase' }}>
+            Chelmsford, Essex
+          </span>
+        </motion.div>
       </section>
 
       {/* ── PORTFOLIO ────────────────────────── */}
