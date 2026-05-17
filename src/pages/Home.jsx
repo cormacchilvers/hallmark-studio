@@ -187,7 +187,7 @@ export default function Home() {
         {/* ─── MOBILE layout (<md) ─── */}
         <div
           className="md:hidden flex flex-col relative"
-          style={{ height: '100%', padding: '80px 28px 40px', zIndex: 10, justifyContent: 'center' }}
+          style={{ height: '100%', padding: '0 28px', zIndex: 10, justifyContent: 'center' }}
         >
           <motion.p
             initial={{ opacity: 0, y: 8 }}
