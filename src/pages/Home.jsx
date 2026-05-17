@@ -296,7 +296,7 @@ export default function Home() {
       </section>
 
       {/* ── PORTFOLIO ────────────────────────── */}
-      <section className="py-14">
+      <section className="py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             variants={fadeUp}
@@ -315,7 +315,7 @@ export default function Home() {
             whileInView="visible"
             viewport={{ once: true }}
             custom={1}
-            className="font-serif-italic text-gold text-xl mb-8"
+            className="font-serif-italic text-gold text-xl mb-14"
           >
             From concept to live — see what we build.
           </motion.p>
@@ -390,7 +390,7 @@ export default function Home() {
       </section>
 
       {/* ── ABOUT STRIP ───────────────────────── */}
-      <section className="py-10">
+      <section className="py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-6">
           <div ref={aboutRef} className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center" style={{ opacity: 0 }}>
             <div>
@@ -430,7 +430,7 @@ export default function Home() {
       </section>
 
       {/* ── CTA ───────────────────────────────── */}
-      <section className="py-20 relative overflow-hidden">
+      <section className="py-28 md:py-36 relative overflow-hidden">
         <div
           style={{
             position: 'absolute',
