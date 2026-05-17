@@ -123,7 +123,7 @@ export default function Home() {
       {/* ── HERO ─────────────────────────────── */}
       <section
         className="relative overflow-hidden"
-        style={{ paddingTop: 'clamp(60px, 10vh, 130px)', paddingBottom: 'clamp(60px, 10vh, 130px)', display: 'flex', alignItems: 'center' }}
+        style={{ paddingTop: 'clamp(60px, 10vh, 130px)', paddingBottom: 'clamp(16px, 3vh, 60px)', display: 'flex', alignItems: 'center' }}
       >
         <FilmGrain />
 
@@ -202,7 +202,7 @@ export default function Home() {
           <h1
             className="font-black text-cream"
             style={{
-              fontSize: 'clamp(2.2rem, 5.5vw, 8.5rem)',
+              fontSize: 'clamp(2.8rem, 5.5vw, 8.5rem)',
               lineHeight: 0.97,
               letterSpacing: '-0.02em',
               marginBottom: '1.75rem',
@@ -259,7 +259,7 @@ export default function Home() {
       </section>
 
       {/* ── PORTFOLIO ────────────────────────── */}
-      <section className="pt-12 pb-16 md:pt-24 md:pb-32">
+      <section className="pt-8 pb-16 md:pt-24 md:pb-32">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             variants={fadeUp}
