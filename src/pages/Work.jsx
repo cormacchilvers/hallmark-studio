@@ -204,8 +204,7 @@ export default function Work() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="card-dark rounded-xl overflow-hidden hover:-translate-y-1 transition-transform duration-300 group block"
-                style={i === additionalWork.length - 1 ? { gridColumn: 'span 2' } : {}}
+                className={`card-dark rounded-xl overflow-hidden hover:-translate-y-1 transition-transform duration-300 group block${i === additionalWork.length - 1 ? ' sm:col-span-2' : ''}`}
               >
                 {/* Grayscale image thumbnail */}
                 <div style={{ height: 140, overflow: 'hidden', position: 'relative' }}>

@@ -93,7 +93,6 @@ function FilmGrain() {
 
 export default function Home() {
   const cardsRef = useRef(null)
-  const aboutRef = useRef(null)
 
   useEffect(() => {
     ScrollTrigger.getAll().forEach(t => t.kill())
@@ -113,19 +112,6 @@ export default function Home() {
         )
       }
 
-      const aboutEl = aboutRef.current
-      if (aboutEl) {
-        gsap.set(aboutEl, { opacity: 0, y: 36 })
-        triggers.push(
-          ScrollTrigger.create({
-            trigger: aboutEl,
-            start: 'top 80%',
-            once: true,
-            onEnter: () => gsap.to(aboutEl, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }),
-          })
-        )
-      }
-
       ScrollTrigger.refresh()
     }, 350)
 
@@ -137,7 +123,7 @@ export default function Home() {
       {/* ── HERO ─────────────────────────────── */}
       <section
         className="relative overflow-hidden"
-        style={{ height: '100dvh', display: 'flex', alignItems: 'center' }}
+        style={{ height: '85vh', display: 'flex', alignItems: 'center' }}
       >
         <FilmGrain />
 
@@ -270,42 +256,19 @@ export default function Home() {
           </motion.div>
         </div>
 
-        {/* Bottom strip — pinned to very bottom */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 1.0 }}
-          style={{
-            position: 'absolute',
-            bottom: 24,
-            left: 24,
-            right: 24,
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            zIndex: 10,
-          }}
-        >
-          <span style={{ color: 'rgba(232,232,228,0.2)', fontSize: 11, fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase' }}>
-            ©2026 · Hallmark Studio
-          </span>
-          <span style={{ color: 'rgba(232,232,228,0.2)', fontSize: 11, fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase' }}>
-            Chelmsford, Essex
-          </span>
-        </motion.div>
       </section>
 
       {/* ── PORTFOLIO ────────────────────────── */}
-      <section className="py-24 md:py-32">
+      <section style={{ paddingTop: 100, paddingBottom: 140 }}>
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="mb-4"
+            style={{ marginBottom: 16 }}
           >
-            <h2 className="text-5xl font-black text-cream">
+            <h2 className="text-7xl font-black text-cream">
               The Work<span className="text-gold">.</span>
             </h2>
           </motion.div>
@@ -315,7 +278,8 @@ export default function Home() {
             whileInView="visible"
             viewport={{ once: true }}
             custom={1}
-            className="font-serif-italic text-gold text-xl mb-14"
+            className="font-serif-italic text-gold text-2xl"
+            style={{ marginBottom: 64 }}
           >
             From concept to live — see what we build.
           </motion.p>
@@ -339,7 +303,7 @@ export default function Home() {
                   {/* Screenshot */}
                   <div
                     style={{
-                      height: i === 0 ? 220 : 180,
+                      height: i === 0 ? 300 : 260,
                       position: 'relative',
                       overflow: 'hidden',
                     }}
@@ -367,15 +331,15 @@ export default function Home() {
                     />
                   </div>
 
-                  <div className="p-6 flex flex-col flex-1">
-                    <h3 className="text-cream font-bold text-xl mb-2">{item.name}</h3>
-                    <p className="text-cream/50 text-sm mb-4 flex-1">{item.desc}</p>
+                  <div className="p-8 flex flex-col flex-1">
+                    <h3 className="text-cream font-bold text-2xl mb-3">{item.name}</h3>
+                    <p className="text-cream/50 text-base mb-5 flex-1">{item.desc}</p>
                     <div className="flex items-center justify-between mt-auto">
                       <a
                         href={item.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-cream/55 hover:text-gold text-sm font-semibold transition-colors duration-200 group/link flex items-center gap-1"
+                        className="text-cream/55 hover:text-gold text-base font-semibold transition-colors duration-200 group/link flex items-center gap-1"
                       >
                         <span className="border-b border-cream/20 group-hover/link:border-gold transition-colors duration-200">View Live</span>
                         <span className="group-hover/link:translate-x-0.5 transition-transform duration-200">→</span>
@@ -390,9 +354,15 @@ export default function Home() {
       </section>
 
       {/* ── ABOUT STRIP ───────────────────────── */}
-      <section className="py-24 md:py-32">
+      <section style={{ paddingTop: 140, paddingBottom: 140 }}>
         <div className="max-w-7xl mx-auto px-6">
-          <div ref={aboutRef} className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center" style={{ opacity: 0 }}>
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+          >
             <div>
               <h2 className="text-5xl font-black text-cream mb-3">
                 We are Hallmark Studio.
@@ -425,12 +395,12 @@ export default function Home() {
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* ── CTA ───────────────────────────────── */}
-      <section className="py-28 md:py-36 relative overflow-hidden">
+      <section style={{ paddingTop: 140, paddingBottom: 140 }} className="relative overflow-hidden">
         <div
           style={{
             position: 'absolute',
