@@ -259,7 +259,7 @@ export default function Home() {
       </section>
 
       {/* ── PORTFOLIO ────────────────────────── */}
-      <section style={{ paddingTop: 100, paddingBottom: 140 }}>
+      <section className="pt-12 pb-16 md:pt-24 md:pb-32">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             variants={fadeUp}
@@ -354,7 +354,7 @@ export default function Home() {
       </section>
 
       {/* ── ABOUT STRIP ───────────────────────── */}
-      <section style={{ paddingTop: 140, paddingBottom: 140 }}>
+      <section className="py-16 md:py-32">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             variants={fadeUp}
@@ -400,7 +400,7 @@ export default function Home() {
       </section>
 
       {/* ── CTA ───────────────────────────────── */}
-      <section style={{ paddingTop: 140, paddingBottom: 140 }} className="relative overflow-hidden">
+      <section className="py-16 md:py-32 relative overflow-hidden">
         <div
           style={{
             position: 'absolute',
