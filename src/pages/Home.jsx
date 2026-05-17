@@ -123,7 +123,7 @@ export default function Home() {
       {/* ── HERO ─────────────────────────────── */}
       <section
         className="relative overflow-hidden"
-        style={{ height: '85vh', display: 'flex', alignItems: 'center' }}
+        style={{ paddingTop: 'clamp(60px, 10vh, 130px)', paddingBottom: 'clamp(60px, 10vh, 130px)', display: 'flex', alignItems: 'center' }}
       >
         <FilmGrain />
 
@@ -268,7 +268,7 @@ export default function Home() {
             viewport={{ once: true }}
             style={{ marginBottom: 16 }}
           >
-            <h2 className="text-7xl font-black text-cream">
+            <h2 className="font-black text-cream" style={{ fontSize: 'clamp(2.5rem, 8vw, 4.5rem)' }}>
               The Work<span className="text-gold">.</span>
             </h2>
           </motion.div>
@@ -278,8 +278,8 @@ export default function Home() {
             whileInView="visible"
             viewport={{ once: true }}
             custom={1}
-            className="font-serif-italic text-gold text-2xl"
-            style={{ marginBottom: 64 }}
+            className="font-serif-italic text-gold"
+            style={{ fontSize: 'clamp(1.1rem, 4vw, 1.5rem)', marginBottom: 64 }}
           >
             From concept to live — see what we build.
           </motion.p>
