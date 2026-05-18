@@ -42,10 +42,10 @@ const showcases = [
 
 const additionalWork = [
   {
-    name: 'SparkSafe Electrical',
-    sector: 'Trade · Electrical',
-    url: 'https://sparksafe-electrical.vercel.app',
-    img: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=400&q=80',
+    name: 'ProFlow Plumbing',
+    sector: 'Trade · Plumbing',
+    url: 'https://plumbing-website-20.vercel.app',
+    img: 'https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=400&q=80',
   },
   {
     name: 'Peak Roofing Co',
