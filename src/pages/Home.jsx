@@ -1,10 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
 
 const fadeUp = {
   hidden: { opacity: 0, y: 36 },
@@ -15,33 +11,30 @@ const fadeUp = {
   }),
 }
 
-const portfolio = [
+const whyPoints = [
   {
-    name: 'Cornerstone Builders',
-    tier: 'Essential',
-    price: '£599',
-    img: '/cornerstone.png',
-    url: 'https://cornerstone-builders-demo.vercel.app',
-    desc: 'Bold trade website built to win local jobs.',
-    accent: '#4CAF50',
+    title: 'No templates. Ever.',
+    body: "Every site is built from scratch, custom coded to your brand. You'll never look like anyone else.",
   },
   {
-    name: 'Blade & Co',
-    tier: 'Studio',
-    price: '£999',
-    img: '/blade.png',
-    url: 'https://blade-co-demo.vercel.app',
-    desc: 'Sharp barbershop brand with online booking.',
-    accent: '#7c6fe0',
+    title: 'Priced for real businesses.',
+    body: "Premium quality without the agency price tag. We keep our costs lean so you don't overpay.",
   },
   {
-    name: 'Ember & Oak',
-    tier: 'Signature',
-    price: '£1,799',
-    img: '/ember.png',
-    url: 'https://restaurant-demo-site-sable.vercel.app',
-    desc: 'Cinematic restaurant site with fire video hero and immersive animations.',
-    accent: '#d4a060',
+    title: 'Fast turnaround.',
+    body: "Most sites delivered in under two weeks. We don't drag projects out.",
+  },
+  {
+    title: 'Design that converts.',
+    body: 'Every layout is built to turn visitors into enquiries, not just look good.',
+  },
+  {
+    title: 'Direct access, always.',
+    body: 'No account managers or middlemen. You deal with us directly, start to finish.',
+  },
+  {
+    title: 'Built to perform.',
+    body: 'Clean code, fast load times, and SEO-friendly foundations baked in from day one.',
   },
 ]
 
@@ -92,32 +85,6 @@ function FilmGrain() {
 }
 
 export default function Home() {
-  const cardsRef = useRef(null)
-
-  useEffect(() => {
-    ScrollTrigger.getAll().forEach(t => t.kill())
-
-    const triggers = []
-    const timeout = setTimeout(() => {
-      const cards = cardsRef.current?.querySelectorAll('.work-card')
-      if (cards?.length) {
-        gsap.set(cards, { opacity: 0, y: 40 })
-        triggers.push(
-          ScrollTrigger.create({
-            trigger: cardsRef.current,
-            start: 'top 80%',
-            once: true,
-            onEnter: () => gsap.to(cards, { opacity: 1, y: 0, stagger: 0.12, duration: 0.7, ease: 'power3.out' }),
-          })
-        )
-      }
-
-      ScrollTrigger.refresh()
-    }, 350)
-
-    return () => { clearTimeout(timeout); triggers.forEach(t => t.kill()) }
-  }, [])
-
   return (
     <div className="bg-dark min-h-screen">
       {/* ── HERO ─────────────────────────────── */}
@@ -170,7 +137,7 @@ export default function Home() {
           }}
         />
 
-        {/* ─── Content — single centred block ─── */}
+        {/* ─── Content ─── */}
         <div
           style={{
             position: 'relative',
@@ -255,122 +222,60 @@ export default function Home() {
             <Link to="/contact" className="btn-outline">Get a Quote</Link>
           </motion.div>
         </div>
-
       </section>
 
-      {/* ── PORTFOLIO ────────────────────────── */}
-      <section className="pt-8 pb-16 md:pt-24 md:pb-32">
+      {/* ── WHY HALLMARK STUDIO ───────────────── */}
+      <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            style={{ marginBottom: 16 }}
+            style={{ marginBottom: 48 }}
           >
-            <h2 className="font-black text-cream" style={{ fontSize: 'clamp(2.5rem, 8vw, 4.5rem)' }}>
-              The Work<span className="text-gold">.</span>
+            <h2 className="text-4xl md:text-5xl font-black text-cream">
+              Why Hallmark Studio<span className="text-gold">?</span>
             </h2>
           </motion.div>
-          <motion.p
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            custom={1}
-            className="font-serif-italic text-gold"
-            style={{ fontSize: 'clamp(1.1rem, 4vw, 1.5rem)', marginBottom: 64 }}
-          >
-            From concept to live — see what we build.
-          </motion.p>
 
-          <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {portfolio.map((item, i) => (
-              <div
-                key={item.name}
-                className="work-card h-full"
-                style={{ opacity: 0 }}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
+            {whyPoints.map((point, i) => (
+              <motion.div
+                key={point.title}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                custom={i}
               >
-                <div
-                  className="card-dark rounded-2xl overflow-hidden group transition-all duration-300 hover:-translate-y-2 flex flex-col h-full"
-                  style={{
-                    borderColor: i === 0 ? `${item.accent}45` : `${item.accent}28`,
-                    boxShadow: i === 0
-                      ? `0 4px 40px rgba(0,0,0,0.4), 0 0 0 1px ${item.accent}20`
-                      : `0 4px 30px rgba(0,0,0,0.25)`,
-                  }}
-                >
-                  {/* Screenshot */}
-                  <div
-                    style={{
-                      height: i === 0 ? 300 : 260,
-                      position: 'relative',
-                      overflow: 'hidden',
-                    }}
-                  >
-                    <img
-                      src={item.img}
-                      alt={item.name}
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        transition: 'transform 0.5s ease',
-                        display: 'block',
-                      }}
-                      className="group-hover:scale-105"
-                    />
-                    <div
-                      style={{
-                        position: 'absolute',
-                        inset: 0,
-                        background: 'rgba(0,0,0,0)',
-                        transition: 'background 0.3s ease',
-                      }}
-                      className="group-hover:!bg-black/30"
-                    />
-                  </div>
-
-                  <div className="p-8 flex flex-col flex-1">
-                    <h3 className="text-cream font-bold text-2xl mb-3">{item.name}</h3>
-                    <p className="text-cream/50 text-base mb-5 flex-1">{item.desc}</p>
-                    <div className="flex items-center justify-between mt-auto">
-                      <a
-                        href={item.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-cream/55 hover:text-gold text-base font-semibold transition-colors duration-200 group/link flex items-center gap-1"
-                      >
-                        <span className="border-b border-cream/20 group-hover/link:border-gold transition-colors duration-200">View Live</span>
-                        <span className="group-hover/link:translate-x-0.5 transition-transform duration-200">→</span>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                <span style={{ color: '#C9A84C', fontWeight: 700, fontSize: 18, display: 'block', marginBottom: 8 }}>—</span>
+                <h3 className="text-cream font-bold text-lg mb-2">{point.title}</h3>
+                <p className="text-cream/50 text-sm leading-relaxed">{point.body}</p>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── ABOUT STRIP ───────────────────────── */}
-      <section className="py-16 md:py-32">
+      {/* ── WE ARE HALLMARK STUDIO ───────────── */}
+      <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+            className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
           >
             <div>
-              <h2 className="text-5xl font-black text-cream mb-3">
+              <h2 className="text-4xl md:text-5xl font-black text-cream mb-3">
                 We are Hallmark Studio.
               </h2>
-              <p className="text-cream/60 text-xl mb-6">
+              <p className="text-cream/60 text-lg mb-5">
                 A two-person agency based in Chelmsford, Essex.
               </p>
-              <p className="text-cream/60 leading-relaxed text-lg">
+              <p className="text-cream/50 leading-relaxed">
                 We build fast, beautiful, custom websites for local businesses who want to
                 stand out. No templates. No shortcuts. Every site is built from scratch.
               </p>
@@ -378,7 +283,7 @@ export default function Home() {
 
             <div>
               <div
-                className="card-dark rounded-2xl p-8 space-y-5"
+                className="card-dark rounded-2xl p-7 space-y-4"
                 style={{
                   boxShadow: '0 0 50px rgba(201,168,76,0.07), 0 0 0 1px rgba(201,168,76,0.14)',
                 }}
@@ -388,9 +293,9 @@ export default function Home() {
                   { label: 'Location', value: 'Chelmsford, Essex' },
                   { label: 'Email', value: 'hello@hallmarkstudio.com' },
                 ].map(({ label, value }) => (
-                  <div key={label} className="flex justify-between items-center border-b border-gold/10 pb-5 last:border-0 last:pb-0">
+                  <div key={label} className="flex justify-between items-center border-b border-gold/10 pb-4 last:border-0 last:pb-0">
                     <span className="text-cream/55 text-sm tracking-widest uppercase font-semibold">{label}</span>
-                    <span className="text-cream font-semibold">{value}</span>
+                    <span className="text-cream font-semibold text-sm">{value}</span>
                   </div>
                 ))}
               </div>
