@@ -1,37 +1,47 @@
 import { Link } from 'react-router-dom'
 
+const navLinks = [
+  { to: '/', label: 'Home' },
+  { to: '/work', label: 'Work' },
+  { to: '/pricing', label: 'Pricing' },
+  { to: '/contact', label: 'Contact' },
+]
+
 export default function Footer() {
   return (
-    <footer className="bg-dark border-t border-gold/10 pt-16 pb-8">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+    <footer style={{ borderTop: '1px solid rgba(201,168,76,0.1)', backgroundColor: '#111111' }}>
+      <div className="max-w-7xl mx-auto px-6 pt-14 pb-8">
+
+        {/* Main grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+
           {/* Brand */}
           <div>
-            <img src="/hsbg.png.png" alt="Hallmark Studio" style={{ height: 64, width: 'auto', marginBottom: 8 }} />
-            <p className="font-serif-italic text-gold text-lg mb-4">
+            <div
+              className="font-black text-cream"
+              style={{ fontSize: 28, letterSpacing: '-0.03em', marginBottom: 10 }}
+            >
+              HS<span className="text-gold">.</span>
+            </div>
+            <p className="font-serif-italic text-gold" style={{ fontSize: 15, marginBottom: 12 }}>
               "Stand Out. Stay Ahead."
             </p>
-            <p className="text-cream/40 text-sm">
-              Chelmsford, Essex
+            <p className="text-cream/30 text-xs tracking-wide">
+              Chelmsford, Essex · Est. 2026
             </p>
           </div>
 
           {/* Navigation */}
           <div>
-            <h4 className="text-cream/40 text-xs tracking-widest uppercase mb-5 font-semibold">
-              Navigation
-            </h4>
+            <p className="text-cream/30 text-xs tracking-widest uppercase font-semibold mb-5">
+              Pages
+            </p>
             <nav className="flex flex-col gap-3">
-              {[
-                { to: '/', label: 'Home' },
-                { to: '/work', label: 'Work' },
-                { to: '/pricing', label: 'Pricing' },
-                { to: '/contact', label: 'Contact' },
-              ].map((link) => (
+              {navLinks.map((link) => (
                 <Link
                   key={link.to}
                   to={link.to}
-                  className="text-cream/60 hover:text-cream text-sm transition-colors"
+                  className="text-cream/55 hover:text-cream text-sm transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -41,31 +51,33 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-cream/40 text-xs tracking-widest uppercase mb-5 font-semibold">
+            <p className="text-cream/30 text-xs tracking-widest uppercase font-semibold mb-5">
               Get In Touch
-            </h4>
+            </p>
             <a
               href="mailto:hello@hallmarkstudio.com"
-              className="text-gold hover:text-gold/80 text-sm block mb-3 transition-colors"
+              className="text-gold hover:text-gold/70 text-sm block mb-2 transition-colors"
             >
               hello@hallmarkstudio.com
             </a>
-            <p className="text-cream/40 text-sm mb-5">Chelmsford, Essex</p>
-            <Link to="/contact" className="btn-gold text-sm inline-block">
-              Get a Quote
-            </Link>
+            <p className="text-cream/35 text-sm">Chelmsford, Essex</p>
           </div>
+
         </div>
 
-        {/* Bottom */}
-        <div className="border-t border-gold/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-cream/30 text-xs">
+        {/* Bottom bar */}
+        <div
+          className="flex flex-col md:flex-row items-center justify-between gap-3"
+          style={{ borderTop: '1px solid rgba(232,232,228,0.06)', paddingTop: 24 }}
+        >
+          <p className="text-cream/25 text-xs">
             © 2026 Hallmark Studio. All rights reserved.
           </p>
-          <p className="text-cream/20 text-xs">
+          <p className="text-cream/15 text-xs tracking-widest uppercase">
             Premium Web Design · Chelmsford, Essex
           </p>
         </div>
+
       </div>
     </footer>
   )
