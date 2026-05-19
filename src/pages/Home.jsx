@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { Helmet } from 'react-helmet-async'
 import Marquee from '../components/Marquee'
 
 const fadeUp = {
@@ -81,6 +82,16 @@ function FilmGrain() {
 export default function Home() {
   return (
     <div className="bg-dark min-h-screen">
+      <Helmet>
+        <title>Hallmark Studio | Premium Web Design Chelmsford Essex</title>
+        <meta name="description" content="Custom websites for ambitious local businesses. Built to convert, designed to impress. Based in Chelmsford Essex, working worldwide. From £599." />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:site_name" content="Hallmark Studio" />
+        <meta property="og:type" content="website" />
+        <meta name="geo.region" content="GB-ESS" />
+        <meta name="geo.placename" content="Chelmsford, Essex" />
+        <link rel="canonical" href="https://www.hallmarkstudio.com/" />
+      </Helmet>
 
       {/* ── HERO ─────────────────────────────── */}
       <section

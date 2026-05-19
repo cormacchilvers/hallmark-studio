@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { gsap } from 'gsap'
+import { Helmet } from 'react-helmet-async'
 
 const inputStyles = {
   width: '100%',
@@ -141,6 +142,16 @@ export default function Contact() {
 
   return (
     <div className="bg-dark pt-24">
+      <Helmet>
+        <title>Contact Hallmark Studio | Web Design Chelmsford Essex</title>
+        <meta name="description" content="Get in touch with Hallmark Studio. Based in Chelmsford Essex, we build custom websites for local businesses starting from £599." />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:site_name" content="Hallmark Studio" />
+        <meta property="og:type" content="website" />
+        <meta name="geo.region" content="GB-ESS" />
+        <meta name="geo.placename" content="Chelmsford, Essex" />
+        <link rel="canonical" href="https://www.hallmarkstudio.com/contact" />
+      </Helmet>
       {/* Header */}
       <div className="max-w-7xl mx-auto px-6 pt-12 pb-6">
         <h1

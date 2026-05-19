@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Helmet } from 'react-helmet-async'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -96,6 +97,16 @@ function FaqItem({ q, a }) {
 export default function Pricing() {
   return (
     <div className="bg-dark min-h-screen pt-24">
+      <Helmet>
+        <title>Web Design Pricing | Hallmark Studio Chelmsford</title>
+        <meta name="description" content="Transparent web design pricing from £599. Custom builds, hosting plans and maintenance packages for local businesses across Essex." />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:site_name" content="Hallmark Studio" />
+        <meta property="og:type" content="website" />
+        <meta name="geo.region" content="GB-ESS" />
+        <meta name="geo.placename" content="Chelmsford, Essex" />
+        <link rel="canonical" href="https://www.hallmarkstudio.com/pricing" />
+      </Helmet>
       {/* Header */}
       <div className="max-w-4xl mx-auto px-6 py-16 text-center">
         <motion.h1

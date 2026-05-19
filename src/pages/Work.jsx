@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { Helmet } from 'react-helmet-async'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -15,6 +16,7 @@ const showcases = [
     name: 'Ember & Oak',
     tier: 'Signature',
     img: '/ember.png',
+    alt: 'Custom restaurant website design Essex',
     url: 'https://restaurant-demo-site-sable.vercel.app',
     desc: 'A concept site built to show what we can do for restaurant and hospitality brands — cinematic video hero, multi-page layout, and immersive animations that put the atmosphere front and centre.',
     tags: ['Restaurant', 'Cinematic', 'Multi-page', 'Animations'],
@@ -24,6 +26,7 @@ const showcases = [
     name: 'Blade & Co',
     tier: 'Studio',
     img: '/blade.png',
+    alt: 'Custom barbershop website design Essex',
     url: 'https://blade-co-demo.vercel.app',
     desc: 'A demo site demonstrating our approach for barbershop brands — sharp, mobile-first design built around a bold identity, with booking integration and a layout that drives footfall.',
     tags: ['Barbershop', 'Booking', 'Brand', 'Mobile-first'],
@@ -33,6 +36,7 @@ const showcases = [
     name: 'Cornerstone Builders',
     tier: 'Essential',
     img: '/cornerstone.png',
+    alt: 'Custom construction company website design Essex',
     url: 'https://cornerstone-builders-demo.vercel.app',
     desc: 'A demo site built to showcase what we can do for local builders — clean, professional, and designed to generate leads, with clear trust signals and a strong local presence.',
     tags: ['Trade', 'Lead Gen', 'Local SEO', 'Essential'],
@@ -46,36 +50,51 @@ const additionalWork = [
     sector: 'Trade · Plumbing',
     url: 'https://plumbing-website-20.vercel.app',
     img: 'https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=400&q=80',
+    alt: 'Custom plumbing company website design Essex',
   },
   {
     name: 'Peak Roofing Co',
     sector: 'Trade · Roofing',
     url: 'https://peak-roofing-demo.vercel.app',
     img: 'https://images.unsplash.com/photo-1632759145351-1d592919f522?w=400&q=80',
+    alt: 'Custom roofing company website design Essex',
   },
   {
     name: 'Fine Line Decorators',
     sector: 'Trade · Decorating',
     url: 'https://fine-line-decorators-demo.vercel.app',
     img: 'https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=400&q=80',
+    alt: 'Custom decorating company website design Essex',
   },
   {
     name: 'Meridian Property',
     sector: 'Property · Estate Agency',
     url: 'https://meridian-property-three.vercel.app',
     img: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&q=80',
+    alt: 'Custom estate agency website design Essex',
   },
   {
     name: 'Lumière Beauty',
     sector: 'Beauty · Wellness',
     url: 'https://lumiere-beauty-two.vercel.app',
     img: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&q=80',
+    alt: 'Custom beauty salon website design Essex',
   },
 ]
 
 export default function Work() {
   return (
     <div className="bg-dark min-h-screen pt-24">
+      <Helmet>
+        <title>Our Work | Hallmark Studio Web Design Essex</title>
+        <meta name="description" content="See our portfolio of custom websites built for local businesses across Essex and beyond. No templates, built from scratch." />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:site_name" content="Hallmark Studio" />
+        <meta property="og:type" content="website" />
+        <meta name="geo.region" content="GB-ESS" />
+        <meta name="geo.placename" content="Chelmsford, Essex" />
+        <link rel="canonical" href="https://www.hallmarkstudio.com/work" />
+      </Helmet>
       {/* Header */}
       <div className="max-w-7xl mx-auto px-6 py-16">
         <motion.h1
@@ -123,7 +142,7 @@ export default function Work() {
             >
               <img
                 src={item.img}
-                alt={item.name}
+                alt={item.alt}
                 style={{
                   width: '100%',
                   height: '100%',
@@ -210,7 +229,7 @@ export default function Work() {
                 <div style={{ height: 140, overflow: 'hidden', position: 'relative' }}>
                   <img
                     src={item.img}
-                    alt={item.name}
+                    alt={item.alt}
                     style={{
                       width: '100%',
                       height: '100%',
