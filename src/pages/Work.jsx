@@ -46,11 +46,11 @@ const showcases = [
 
 const additionalWork = [
   {
-    name: 'ProFlow Plumbing',
-    sector: 'Trade · Plumbing',
-    url: 'https://plumbing-website-20.vercel.app',
-    img: 'https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=400&q=80',
-    alt: 'Custom plumbing company website design Essex',
+    name: 'Worthington Build',
+    sector: 'Construction · Luxury Residential',
+    url: 'https://construction-company-rosy-seven.vercel.app',
+    img: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=400&q=80',
+    alt: 'Custom construction company website design Essex',
   },
   {
     name: 'Peak Roofing Co',
